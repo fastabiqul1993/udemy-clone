@@ -1,0 +1,50 @@
+.student-feedback {
+  float: left;
+  margin-top: 25px;
+  width: 68%;
+  text-align: left;
+}
+
+.rating {
+  text-align: center;
+  padding-top: 25px;
+}
+
+.rating span:not(:last-child) {
+  margin-right: 10px;
+}
+
+.rating .star-badge .fa{
+  margin: 0 2px;
+}
+
+.rating p {
+  padding-right: 10px;
+}
+
+.rate-bar {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin-bottom: 5px;
+  width: 100%;
+}
+
+.rate-bar .bar {
+  width: 57%;
+  margin-right: 5%;
+}
+
+.right-badge .fa{
+  margin: 0 3px;
+}
+
+.right-badge .percentage {
+  margin-left: 10px;
+}
+
+
+
+
+
