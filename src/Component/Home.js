@@ -1,13 +1,20 @@
 import React, { Component } from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "../CSS/main.css";
+import Slider from "react-slick";
 
 class content extends Component {
   render() {
+    const settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 3,
+      slidesToScroll: 3
+    };
     return (
       <div>
-        <Container className="justify-content-center mr-5">
+        <Container className="justify-content-center ">
           <h3 className="my-3">What to learn next</h3>
           <h5>Top courses in Design</h5>
           <div className="d-flex">
