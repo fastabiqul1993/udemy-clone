@@ -63,9 +63,10 @@
 }
 
 .right-header {
-  position: absolute;
-  right: 0;
-  top: 15%;
+  position: fixed;
+  right: 8%;
+  top: 5%;
+  width: 348px;
 }
 
 .hero-card .hero-card-img {
