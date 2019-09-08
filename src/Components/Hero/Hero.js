@@ -6,7 +6,7 @@ function Hero() {
   return (
     <div className="header">
       <Container style={{ position: "relative" }}>
-        <Row className="block">
+        <Row>
           <Col className="upper-header" md={{ span: 4, offset: 8 }}>
             <span>
               <i className="fa fa-gift" aria-hidden="true"></i> Gift this course
