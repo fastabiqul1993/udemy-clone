@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Navbar from "../Component/Navbar";
-import Content from "../Component/Home";
-import Footer from "../Component/Footer";
-import Navbar2 from "../Component/navbar2";
+import Navbar from "../Components/Navbar/Navbar";
+import Content from "../Components/Courses/Home";
+import Footer from "../Components/Footer/Footer";
+import Navbar2 from "../Components/Navbar/navbar2";
 class home extends Component {
   render() {
     return (

@@ -8,9 +8,9 @@ import {
   DropdownButton,
   Dropdown
 } from "react-bootstrap";
-import "../CSS/Footer.css";
+import "../../CSS/Footer.css";
 
-const footer = () => {
+const Footer = () => {
   return (
     <>
       <div className="footer1">
@@ -190,4 +190,4 @@ const footer = () => {
   );
 };
 
-export default footer;
+export default Footer;

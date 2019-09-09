@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
-import "../CSS/Home.css";
+import "../../CSS/Home.css";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -85,7 +85,10 @@ class content extends Component {
           <Slider {...settings}>
             <div>
               <Card style={{ maxWidth: "12rem" }}>
-                <a href="#" style={{ textDecoration: "none", color: "black" }}>
+                <a
+                  href="/detail"
+                  style={{ textDecoration: "none", color: "black" }}
+                >
                   <Card.Img
                     variant="top"
                     src="https://i.udemycdn.com/course/240x135/874012_c7f2_3.jpg"
@@ -129,7 +132,10 @@ class content extends Component {
             </div>
             <div>
               <Card style={{ maxWidth: "12rem" }}>
-                <a href="#" style={{ textDecoration: "none", color: "black" }}>
+                <a
+                  href="/detail"
+                  style={{ textDecoration: "none", color: "black" }}
+                >
                   <Card.Img
                     variant="top"
                     src="https://i.udemycdn.com/course/240x135/1197206_7201_3.jpg"
@@ -173,7 +179,10 @@ class content extends Component {
             </div>
             <div>
               <Card style={{ maxWidth: "12rem" }}>
-                <a href="#" style={{ textDecoration: "none", color: "black" }}>
+                <a
+                  href="/detail"
+                  style={{ textDecoration: "none", color: "black" }}
+                >
                   <Card.Img
                     variant="top"
                     src="https://i.udemycdn.com/course/240x135/1046722_cbd7_2.jpg"
@@ -217,7 +226,10 @@ class content extends Component {
             </div>
             <div>
               <Card style={{ maxWidth: "12rem" }}>
-                <a href="#" style={{ textDecoration: "none", color: "black" }}>
+                <a
+                  href="detail"
+                  style={{ textDecoration: "none", color: "black" }}
+                >
                   <Card.Img
                     variant="top"
                     src="https://i.udemycdn.com/course/240x135/412738_4543.jpg
@@ -262,7 +274,10 @@ class content extends Component {
             </div>
             <div>
               <Card style={{ maxWidth: "12rem" }}>
-                <a href="#" style={{ textDecoration: "none", color: "black" }}>
+                <a
+                  href="/detail"
+                  style={{ textDecoration: "none", color: "black" }}
+                >
                   <Card.Img
                     variant="top"
                     src="https://i.udemycdn.com/course/240x135/627730_83d0_18.jpg"
@@ -306,7 +321,10 @@ class content extends Component {
             </div>
             <div>
               <Card style={{ maxWidth: "12rem" }}>
-                <a href="#" style={{ textDecoration: "none", color: "black" }}>
+                <a
+                  href="/detail"
+                  style={{ textDecoration: "none", color: "black" }}
+                >
                   <Card.Img
                     variant="top"
                     src="https://i.udemycdn.com/course/240x135/627730_83d0_18.jpg"
@@ -350,7 +368,10 @@ class content extends Component {
             </div>
             <div>
               <Card style={{ maxWidth: "12rem" }}>
-                <a href="#" style={{ textDecoration: "none", color: "black" }}>
+                <a
+                  href="/detail"
+                  style={{ textDecoration: "none", color: "black" }}
+                >
                   <Card.Img
                     variant="top"
                     src="https://i.udemycdn.com/course/480x270/914296_3670_8.jpg "

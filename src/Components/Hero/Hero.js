@@ -55,7 +55,7 @@ function Hero() {
                 <Card.Title>
                   <h4>Rp 280.000</h4>
                 </Card.Title>
-                <Button variant="danger" size="lg" block>
+                <Button href="/cart" variant="danger" size="lg" block>
                   Add to cart
                 </Button>
                 <Button variant="outline-secondary" size="lg" block>
