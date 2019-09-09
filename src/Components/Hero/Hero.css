@@ -63,9 +63,9 @@
 }
 
 .right-header {
-  position: fixed;
-  right: 8%;
-  top: 5%;
+  position: absolute;
+  right:0;
+  top: 15%;
   width: 348px;
 }
 

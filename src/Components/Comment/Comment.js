@@ -20,7 +20,38 @@ function Comment() {
                   src="https://dummyimage.com/80x80/000/fff"
                   roundedCircle
                 />
-                <span>Stephen Chow</span>
+                <span>Stephen</span>
+              </Figure>
+            </Col>
+            <Col sm={8}>
+              <div>
+                <span className="comment-badge">
+                  <span className="fa fa-star"></span>
+                  <span className="fa fa-star"></span>
+                  <span className="fa fa-star"></span>
+                  <span className="fa fa-star"></span>
+                  <span className="fa fa-star"></span>
+                </span>
+              </div>
+              <p className="comment-text">
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s, when an unknown printer took a galley
+                of type and scrambled it to make a type specimen book.
+              </p>
+            </Col>
+          </Row>
+          <Row>
+            <Col sm={4} className="figure-img">
+              <Figure>
+                <Figure.Image
+                  width={80}
+                  height={80}
+                  alt="171x180"
+                  src="https://dummyimage.com/80x80/000/fff"
+                  roundedCircle
+                />
+                <span>Stephen</span>
               </Figure>
             </Col>
             <Col sm={8}>

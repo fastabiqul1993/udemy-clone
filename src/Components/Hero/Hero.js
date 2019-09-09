@@ -51,7 +51,7 @@ function Hero() {
                 variant="top"
                 src="https://dummyimage.com/286x200/000/fff"
               />
-              <Card.Body>
+              <Card.Body className="hero-body">
                 <Card.Title>
                   <h4>Rp 280.000</h4>
                 </Card.Title>
