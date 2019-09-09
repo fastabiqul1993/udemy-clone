@@ -24,7 +24,7 @@ const footer = () => {
                 height="100rem"
               />
             </Col>
-            <Col md={6} className="pt-4">
+            <Col md={7} className="pt-4">
               <Row>
                 <Col>
                   <h3>Teach the world online</h3>
@@ -117,7 +117,7 @@ const footer = () => {
         <Container>
           <Row>
             <Col md={5}>
-              <p style={{ fontSize: "13px" }}>
+              <p style={{ fontSize: "12px" }}>
                 Top companies choose Udemy for Business to build in-demand
                 career skills.
               </p>
@@ -145,19 +145,19 @@ const footer = () => {
                 className="mr-1"
                 src="https://i.udemycdn.com/partner-logos/eventbrite-logo.svg"
                 height="17"
-                width="99"
+                width="89"
               />
               <img
                 className="mr-1"
                 src="https://i.udemycdn.com/partner-logos/surveymonkey-logo.svg"
                 height="17"
-                width="140"
+                width="120"
               />
               <img
                 className="mr-1"
                 src="https://i.udemycdn.com/partner-logos/booking-logo.svg"
                 height="17"
-                width="140"
+                width="120"
               />
             </Col>
           </Row>

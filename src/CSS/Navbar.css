@@ -52,7 +52,7 @@
   font-size: 12px;
   /* line-height: 30px; */
   /* margin-left: 8px; */
-  width: 30vmax;
+  width: 300px;
 }
 
 .search {
@@ -63,5 +63,16 @@
   left: 50%;
 }
 .nav2 {
-  background-color: #dfdfdf;
+  background-color: #dfdfdfc9;
+}
+.nav1 {
+  box-shadow: 2px 1px 10px rgba(0, 0, 0, 0.26);
+}
+
+.notif {
+  transform: translate(-6px, -8px);
+}
+.card {
+  color: black;
+  text-decoration: none;
 }

@@ -9,15 +9,20 @@ import {
   Container,
   Row,
   Col,
-  Image
+  Image,
+  Badge
 } from "react-bootstrap";
 import "../CSS/Navbar.css";
 class navbar extends Component {
   render() {
     return (
       <>
-        <Navbar bg="light" variant="light">
-          <Container className="justify-content-center d-flex ">
+        <Navbar
+          bg="light"
+          variant="light"
+          className="justify-content-center nav1"
+        >
+          <div className=" d-flex">
             <Navbar.Brand href="#home">
               <img
                 src="https://www.udemy.com/staticx/udemy/images/v6/logo-coral.svg"
@@ -52,9 +57,14 @@ class navbar extends Component {
               <span className="categories">My Courses</span>
             </Nav.Link>
             <Nav.Link>
-              <span className="categories" style={{ color: "red" }}>
-                <i class="fa fa-heart-o fa-lg"></i>
-              </span>
+              <div>
+                <span className="categories" style={{ color: "red" }}>
+                  <i class="fa fa-heart-o fa-lg"></i>
+                  <Badge className="notif" pill variant="danger">
+                    9
+                  </Badge>
+                </span>
+              </div>
             </Nav.Link>
             <Nav.Link>
               <span className="categories">
@@ -74,66 +84,8 @@ class navbar extends Component {
                 roundedCircle
               />
             </Nav.Link>
-          </Container>
+          </div>
         </Navbar>
-        <div className="nav2 ">
-          <Container className="d-flex justify-content-center">
-            <Nav.Link>
-              <span className="categories">
-                <i class="fas fa-laptop-code"></i>
-                {" My Courses"}
-              </span>
-            </Nav.Link>
-            <Nav.Link>
-              <span className="categories">
-                <i class="fa fa-area-chart"></i>
-                {" Business"}
-              </span>
-            </Nav.Link>
-            <Nav.Link>
-              <span className="categories">
-                <i class="fa fa-desktop"></i>
-                {" IT & Software"}
-              </span>
-            </Nav.Link>
-            <Nav.Link>
-              <span className="categories">
-                <i class="fa fa-list-alt"></i>
-                {" Office Productivity"}
-              </span>
-            </Nav.Link>
-            <Nav.Link>
-              <span className="categories">
-                <i class="fa fa-book"></i>
-                {" Personal Development"}
-              </span>
-            </Nav.Link>
-            <Nav.Link>
-              <span className="categories">
-                <i class="fas fa-pencil-ruler"></i>
-                {" Design"}
-              </span>
-            </Nav.Link>
-            <Nav.Link>
-              <span className="categories">
-                <i class="fa fa-bullseye"></i>
-                {" Marketing"}
-              </span>
-            </Nav.Link>
-            <Nav.Link>
-              <span className="categories">
-                <i class="fa fa-heartbeat"></i>
-                {" Health & Fitness"}
-              </span>
-            </Nav.Link>
-            <Nav.Link>
-              <span className="categories">
-                <i class="fa fa-music"></i>
-                {" Music"}
-              </span>
-            </Nav.Link>
-          </Container>
-        </div>
       </>
     );
   }
