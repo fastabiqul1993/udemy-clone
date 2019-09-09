@@ -1,0 +1,36 @@
+.cart-bar {
+  margin-top: 25px;
+}
+
+.cart-bar .cart-body {
+  padding: 5px;
+}
+
+.cart-body .body-image {
+  max-height: 74px;
+  max-width: 130px;
+}
+
+.cart-body .body-text {
+  text-align: left
+}
+
+.body-text h6 {
+  padding-top: 5px;
+}
+
+.body-cmd{
+  text-align: right
+}
+
+.body-cmd span {
+  cursor: pointer;
+}
+
+.price {
+  color: #eb5152;
+}
+
+.cart-checkout {
+  text-align: left;
+}

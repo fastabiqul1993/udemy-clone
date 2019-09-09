@@ -1,0 +1,22 @@
+.comment-display {
+  float: left;
+  margin-top: 25px;
+  width: 68%;
+  text-align: left;
+}
+
+.section {
+  padding-top: 15px;
+}
+
+.section .figure-img span{
+  margin-left: 20px;
+}
+
+.comment-badge .fa{
+  margin: 0 3px;
+}
+
+.comment-text {
+  width: 100%;
+}

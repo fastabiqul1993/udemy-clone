@@ -1,0 +1,26 @@
+.course-content {
+  float: left;
+  margin-top: 25px;
+  width: 68%;
+}
+
+.course-content .title {
+  text-align: left;
+}
+
+.course-content .description {
+  text-align: right;
+  padding-top: 5px;
+}
+
+.description .item:not(:last-child) {
+  margin-right: 13px;
+}
+
+.course-content .accordion {
+  text-align: left;
+}
+
+.course-content .accordion span {
+  float: right;
+}
