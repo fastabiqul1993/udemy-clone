@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import Navbar from "../Component/Navbar";
-import Footer from "../Component/Footer";
+import Navbar from "../Components/Navbar/Navbar";
+import Footer from "../Components/Footer/Footer";
 import { Container, Nav } from "react-bootstrap";
 import "../CSS/whislist.css";
-import Card from "../Component/card";
+import Card from "../Components/Card/card";
 
 class whislist extends Component {
   render() {
@@ -11,10 +11,9 @@ class whislist extends Component {
       <>
         <Navbar />
 
-        <div className="header">
-          <Container className="pt-5 pb-2">
+        <div className="headerup">
+          <Container className="pt-2 pb-2">
             <span className="course">My Course</span>
-            <div style={{ maxWidth: "502px", color: "white" }}></div>
           </Container>
         </div>
         <Container className="mt-4">

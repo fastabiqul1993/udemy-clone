@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Row, Col, Badge, Card, Button } from "react-bootstrap";
 import "./Hero.css";
 
-function Hero() {
+function Hero(props) {
   return (
     <div className="header">
       <Container style={{ position: "relative" }}>
@@ -17,26 +17,17 @@ function Hero() {
           </Col>
           <Col className="left-header" md={8}>
             <div className="title">
-              <h1>Build Responsive Real World Websites with HTML5 and CSS3</h1>
+              <h1>{props.data.title}</h1>
             </div>
             <div className="sub-title">
-              <p>
-                The easiest way to learn modern web design, HTML5 and CSS3
-                step-by-step from scratch. Design AND code a huge project.
-              </p>
+              <p>{props.data.description}</p>
             </div>
             <div className="rate">
               <Badge pill variant="warning" className="right-margin">
                 BESTSELLER
               </Badge>
-              <span className="star-badge">
-                <span className="fa fa-star"></span>
-                <span className="fa fa-star"></span>
-                <span className="fa fa-star"></span>
-                <span className="fa fa-star"></span>
-                <span className="fa fa-star"></span>
-              </span>
-              <span className="right-margin">4.6(28,771 ratings)</span>
+              <span className="star-badge">{props.stars}</span>
+              <span className="right-margin">{props.rating} Ratings</span>
               <span className="right-margin">137,206 students enrolled</span>
             </div>
             <div className="author">
@@ -49,13 +40,13 @@ function Hero() {
               <Card.Img
                 className="hero-card-img"
                 variant="top"
-                src="https://dummyimage.com/286x200/000/fff"
+                src={props.data.image}
               />
               <Card.Body className="hero-body">
                 <Card.Title>
-                  <h4>Rp 280.000</h4>
+                  <h4>Rp.{props.data.price}</h4>
                 </Card.Title>
-                <Button variant="danger" size="lg" block>
+                <Button href="/cart" variant="danger" size="lg" block>
                   Add to cart
                 </Button>
                 <Button variant="outline-secondary" size="lg" block>

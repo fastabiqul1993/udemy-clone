@@ -12,7 +12,7 @@ import {
   Image,
   Badge
 } from "react-bootstrap";
-import "../CSS/Navbar.css";
+import "../../CSS/Navbar.css";
 class navbar extends Component {
   render() {
     return (
@@ -23,7 +23,7 @@ class navbar extends Component {
           className="justify-content-center nav1"
         >
           <div className=" d-flex">
-            <Navbar.Brand href="#home">
+            <Navbar.Brand href="/">
               <img
                 src="https://www.udemy.com/staticx/udemy/images/v6/logo-coral.svg"
                 width="100"
@@ -56,7 +56,7 @@ class navbar extends Component {
             <Nav.Link>
               <span className="categories">My Courses</span>
             </Nav.Link>
-            <Nav.Link>
+            <Nav.Link href="/whislist">
               <div>
                 <span className="categories" style={{ color: "red" }}>
                   <i class="fa fa-heart-o fa-lg"></i>

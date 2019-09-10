@@ -22,7 +22,7 @@ function StudenFeedback() {
         </Col>
         <Col md={8}>
           <div className="rate-bar">
-            <ProgressBar className="bar" variant="secondary" now={40} />
+            <ProgressBar className="bar" variant="secondary" now={60} />
             <span className="right-badge">
               <span className="fa fa-star"></span>
               <span className="fa fa-star"></span>
