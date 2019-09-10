@@ -1,6 +1,10 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { getAllCourses } from "../../Publics/Redux/Actions/coureses";
+import { getRating } from "../../Publics/Redux/Actions/rating";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import CardCol from "../Card/card";
 import Slider from "react-slick";
 import "../../CSS/Home.css";
 
@@ -37,6 +41,17 @@ function SamplePrevArrow(props) {
 }
 
 class content extends Component {
+  state = {
+    courses: []
+  };
+
+  componentDidMount = async () => {
+    await this.props.dispatch(getAllCourses());
+    this.setState({
+      courses: this.props.data.coursesList
+    });
+  };
+
   render() {
     const settings = {
       infinite: false,
@@ -83,340 +98,29 @@ class content extends Component {
           <h3 className="my-3">What to learn next</h3>
           <h5>Top courses in Design</h5>
           <Slider {...settings}>
-            <div>
-              <Card style={{ maxWidth: "12rem" }}>
-                <a
-                  href="/detail"
-                  style={{ textDecoration: "none", color: "black" }}
-                >
-                  <Card.Img
-                    variant="top"
-                    src="https://i.udemycdn.com/course/240x135/874012_c7f2_3.jpg"
+            {this.state.courses.map((course, index) => {
+              return (
+                <div>
+                  <CardCol
+                    id={course.id}
+                    title={course.title}
+                    image={course.image}
+                    price={course.price}
                   />
-                  <Card.Body>
-                    <Card.Title style={{ fontSize: "17px" }}>
-                      The Ultimate Drawing Course - Beginner to...
-                    </Card.Title>
-                    <Card.Text style={{ fontSize: "9px" }}>
-                      Jaysen Batchhelor, Quinton Batch...
-                    </Card.Text>
-                    <Card.Text>
-                      <div style={{ fontSize: "9px" }}>
-                        <i
-                          class="fa fa-star mr-1"
-                          style={{ color: "yellow" }}
-                          aria-hidden="true"
-                        ></i>
-                        <i
-                          class="fa fa-star mr-1"
-                          style={{ color: "yellow" }}
-                          aria-hidden="true"
-                        ></i>
-                        <i
-                          class="fa fa-star mr-1"
-                          style={{ color: "yellow" }}
-                          aria-hidden="true"
-                        ></i>
-                        <i class="fa fa-star-o mr-1" aria-hidden="true"></i>
-                        <i class="fa fa-star-o mr-1" aria-hidden="true"></i>
-                        <span>4,5</span>
-                        <span> (60,600)</span>
-                      </div>
-                    </Card.Text>
-                    <Card.Text>
-                      <h5>Rp168,000</h5>
-                    </Card.Text>
-                  </Card.Body>
-                </a>
-              </Card>
-            </div>
-            <div>
-              <Card style={{ maxWidth: "12rem" }}>
-                <a
-                  href="/detail"
-                  style={{ textDecoration: "none", color: "black" }}
-                >
-                  <Card.Img
-                    variant="top"
-                    src="https://i.udemycdn.com/course/240x135/1197206_7201_3.jpg"
-                  />
-                  <Card.Body>
-                    <Card.Title style={{ fontSize: "17px" }}>
-                      The Ultimate Drawing Course - Beginner to...
-                    </Card.Title>
-                    <Card.Text style={{ fontSize: "9px" }}>
-                      Jaysen Batchhelor, Quinton Batch...
-                    </Card.Text>
-                    <Card.Text>
-                      <div style={{ fontSize: "9px" }}>
-                        <i
-                          class="fa fa-star mr-1"
-                          style={{ color: "yellow" }}
-                          aria-hidden="true"
-                        ></i>
-                        <i
-                          class="fa fa-star mr-1"
-                          style={{ color: "yellow" }}
-                          aria-hidden="true"
-                        ></i>
-                        <i
-                          class="fa fa-star mr-1"
-                          style={{ color: "yellow" }}
-                          aria-hidden="true"
-                        ></i>
-                        <i class="fa fa-star-o mr-1" aria-hidden="true"></i>
-                        <i class="fa fa-star-o mr-1" aria-hidden="true"></i>
-                        <span>4,5</span>
-                        <span> (60,600)</span>
-                      </div>
-                    </Card.Text>
-                    <Card.Text>
-                      <h5>Rp168,000</h5>
-                    </Card.Text>
-                  </Card.Body>
-                </a>
-              </Card>
-            </div>
-            <div>
-              <Card style={{ maxWidth: "12rem" }}>
-                <a
-                  href="/detail"
-                  style={{ textDecoration: "none", color: "black" }}
-                >
-                  <Card.Img
-                    variant="top"
-                    src="https://i.udemycdn.com/course/240x135/1046722_cbd7_2.jpg"
-                  />
-                  <Card.Body>
-                    <Card.Title style={{ fontSize: "17px" }}>
-                      The Ultimate Drawing Course - Beginner to...
-                    </Card.Title>
-                    <Card.Text style={{ fontSize: "9px" }}>
-                      Jaysen Batchhelor, Quinton Batch...
-                    </Card.Text>
-                    <Card.Text>
-                      <div style={{ fontSize: "9px" }}>
-                        <i
-                          class="fa fa-star mr-1"
-                          style={{ color: "yellow" }}
-                          aria-hidden="true"
-                        ></i>
-                        <i
-                          class="fa fa-star mr-1"
-                          style={{ color: "yellow" }}
-                          aria-hidden="true"
-                        ></i>
-                        <i
-                          class="fa fa-star mr-1"
-                          style={{ color: "yellow" }}
-                          aria-hidden="true"
-                        ></i>
-                        <i class="fa fa-star-o mr-1" aria-hidden="true"></i>
-                        <i class="fa fa-star-o mr-1" aria-hidden="true"></i>
-                        <span>4,5</span>
-                        <span> (60,600)</span>
-                      </div>
-                    </Card.Text>
-                    <Card.Text>
-                      <h5>Rp168,000</h5>
-                    </Card.Text>
-                  </Card.Body>
-                </a>
-              </Card>
-            </div>
-            <div>
-              <Card style={{ maxWidth: "12rem" }}>
-                <a
-                  href="detail"
-                  style={{ textDecoration: "none", color: "black" }}
-                >
-                  <Card.Img
-                    variant="top"
-                    src="https://i.udemycdn.com/course/240x135/412738_4543.jpg
-        "
-                  />
-                  <Card.Body>
-                    <Card.Title style={{ fontSize: "17px" }}>
-                      The Ultimate Drawing Course - Beginner to...
-                    </Card.Title>
-                    <Card.Text style={{ fontSize: "9px" }}>
-                      Jaysen Batchhelor, Quinton Batch...
-                    </Card.Text>
-                    <Card.Text>
-                      <div style={{ fontSize: "9px" }}>
-                        <i
-                          class="fa fa-star mr-1"
-                          style={{ color: "yellow" }}
-                          aria-hidden="true"
-                        ></i>
-                        <i
-                          class="fa fa-star mr-1"
-                          style={{ color: "yellow" }}
-                          aria-hidden="true"
-                        ></i>
-                        <i
-                          class="fa fa-star mr-1"
-                          style={{ color: "yellow" }}
-                          aria-hidden="true"
-                        ></i>
-                        <i class="fa fa-star-o mr-1" aria-hidden="true"></i>
-                        <i class="fa fa-star-o mr-1" aria-hidden="true"></i>
-                        <span>4,5</span>
-                        <span> (60,600)</span>
-                      </div>
-                    </Card.Text>
-                    <Card.Text>
-                      <h5>Rp168,000</h5>
-                    </Card.Text>
-                  </Card.Body>
-                </a>
-              </Card>
-            </div>
-            <div>
-              <Card style={{ maxWidth: "12rem" }}>
-                <a
-                  href="/detail"
-                  style={{ textDecoration: "none", color: "black" }}
-                >
-                  <Card.Img
-                    variant="top"
-                    src="https://i.udemycdn.com/course/240x135/627730_83d0_18.jpg"
-                  />
-                  <Card.Body>
-                    <Card.Title style={{ fontSize: "17px" }}>
-                      The Ultimate Drawing Course - Beginner to...
-                    </Card.Title>
-                    <Card.Text style={{ fontSize: "9px" }}>
-                      Jaysen Batchhelor, Quinton Batch...
-                    </Card.Text>
-                    <Card.Text>
-                      <div style={{ fontSize: "9px" }}>
-                        <i
-                          class="fa fa-star mr-1"
-                          style={{ color: "yellow" }}
-                          aria-hidden="true"
-                        ></i>
-                        <i
-                          class="fa fa-star mr-1"
-                          style={{ color: "yellow" }}
-                          aria-hidden="true"
-                        ></i>
-                        <i
-                          class="fa fa-star mr-1"
-                          style={{ color: "yellow" }}
-                          aria-hidden="true"
-                        ></i>
-                        <i class="fa fa-star-o mr-1" aria-hidden="true"></i>
-                        <i class="fa fa-star-o mr-1" aria-hidden="true"></i>
-                        <span>4,5</span>
-                        <span> (60,600)</span>
-                      </div>
-                    </Card.Text>
-                    <Card.Text>
-                      <h5>Rp168,000</h5>
-                    </Card.Text>
-                  </Card.Body>
-                </a>
-              </Card>
-            </div>
-            <div>
-              <Card style={{ maxWidth: "12rem" }}>
-                <a
-                  href="/detail"
-                  style={{ textDecoration: "none", color: "black" }}
-                >
-                  <Card.Img
-                    variant="top"
-                    src="https://i.udemycdn.com/course/240x135/627730_83d0_18.jpg"
-                  />
-                  <Card.Body>
-                    <Card.Title style={{ fontSize: "17px" }}>
-                      The Ultimate Drawing Course - Beginner to...
-                    </Card.Title>
-                    <Card.Text style={{ fontSize: "9px" }}>
-                      Jaysen Batchhelor, Quinton Batch...
-                    </Card.Text>
-                    <Card.Text>
-                      <div style={{ fontSize: "9px" }}>
-                        <i
-                          class="fa fa-star mr-1"
-                          style={{ color: "yellow" }}
-                          aria-hidden="true"
-                        ></i>
-                        <i
-                          class="fa fa-star mr-1"
-                          style={{ color: "yellow" }}
-                          aria-hidden="true"
-                        ></i>
-                        <i
-                          class="fa fa-star mr-1"
-                          style={{ color: "yellow" }}
-                          aria-hidden="true"
-                        ></i>
-                        <i class="fa fa-star-o mr-1" aria-hidden="true"></i>
-                        <i class="fa fa-star-o mr-1" aria-hidden="true"></i>
-                        <span>4,5</span>
-                        <span> (60,600)</span>
-                      </div>
-                    </Card.Text>
-                    <Card.Text>
-                      <h5>Rp168,000</h5>
-                    </Card.Text>
-                  </Card.Body>
-                </a>
-              </Card>
-            </div>
-            <div>
-              <Card style={{ maxWidth: "12rem" }}>
-                <a
-                  href="/detail"
-                  style={{ textDecoration: "none", color: "black" }}
-                >
-                  <Card.Img
-                    variant="top"
-                    src="https://i.udemycdn.com/course/480x270/914296_3670_8.jpg "
-                  />
-                  <Card.Body>
-                    <Card.Title style={{ fontSize: "17px" }}>
-                      The Ultimate Drawing Course - Beginner to...
-                    </Card.Title>
-                    <Card.Text style={{ fontSize: "9px" }}>
-                      Jaysen Batchhelor, Quinton Batch...
-                    </Card.Text>
-                    <Card.Text>
-                      <div style={{ fontSize: "9px" }}>
-                        <i
-                          class="fa fa-star mr-1"
-                          style={{ color: "yellow" }}
-                          aria-hidden="true"
-                        ></i>
-                        <i
-                          class="fa fa-star mr-1"
-                          style={{ color: "yellow" }}
-                          aria-hidden="true"
-                        ></i>
-                        <i
-                          class="fa fa-star mr-1"
-                          style={{ color: "yellow" }}
-                          aria-hidden="true"
-                        ></i>
-                        <i class="fa fa-star-o mr-1" aria-hidden="true"></i>
-                        <i class="fa fa-star-o mr-1" aria-hidden="true"></i>
-                        <span>4,5</span>
-                        <span> (60,600)</span>
-                      </div>
-                    </Card.Text>
-                    <Card.Text>
-                      <h5>Rp168,000</h5>
-                    </Card.Text>
-                  </Card.Body>
-                </a>
-              </Card>
-            </div>
+                </div>
+              );
+            })}
           </Slider>
         </Container>
       </div>
     );
   }
 }
-export default content;
+
+const mapStateToProps = state => {
+  return {
+    data: state.coursesList
+  };
+};
+
+export default connect(mapStateToProps)(content);
