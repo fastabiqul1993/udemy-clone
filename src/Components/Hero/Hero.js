@@ -24,7 +24,7 @@ class Hero extends Component {
                 <i className="fa fa-gift" aria-hidden="true"></i> Gift this course
               </span>
 
-              <span onClick={props.addRemoveWishlist}>
+              <span onClick={this.props.addRemoveWishlist}>
                 <i className="fa fa-heart-o"></i> Wishlist
               </span>
 
