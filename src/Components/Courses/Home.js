@@ -99,7 +99,7 @@ class content extends Component {
     };
     return (
       <div>
-        <Container className="justify-content-center ">
+        <Container className="justify-content-center mb-5 ">
           <h3 className="my-3">What to learn next</h3>
           <h5>Top courses in Design</h5>
           <Slider {...settings}>

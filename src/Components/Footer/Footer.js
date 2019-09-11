@@ -12,7 +12,7 @@ import "../../CSS/Footer.css";
 
 const Footer = () => {
   return (
-    <>
+    <div className="mt-5">
       <div className="footer1">
         <Container className="justify-content-center">
           <Row>
@@ -186,7 +186,7 @@ const Footer = () => {
           </Row>
         </Container>
       </div>
-    </>
+    </div>
   );
 };
 

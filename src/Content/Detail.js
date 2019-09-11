@@ -125,9 +125,13 @@ class Detail extends Component {
 
           addRemoveWishlist={this.addRemoveWishlist}
         />
-        {/* <CourseContent section={this.state.courses.section} /> */}
-        <StudentFeedback />
-        <Comment />
+
+        <CourseContent section={this.state.courses.section} />
+        <div style={{ marginBottom: "70%" }}>
+          <StudentFeedback />
+          <Comment />
+        </div>
+
         <Footer />
       </Fragment>
     );
