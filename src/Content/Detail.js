@@ -11,6 +11,8 @@ import StudentFeedback from "../Components/StudentFeedBack/StudentFeedback";
 import Comment from "../Components/Comment/Comment";
 import Footer from "../Components/Footer/Footer";
 
+import Swal from 'sweetalert2';
+
 
 
 class Detail extends Component {
@@ -25,7 +27,7 @@ class Detail extends Component {
   componentDidMount = async () => {
     await this.props.dispatch(getCourses(this.state.param));
     await this.setState({
-      courses: this.props.data.coursesList.coursesList[0]
+      courses: this.props.data.coursesList.coursesList
     });
     
 
@@ -74,22 +76,38 @@ class Detail extends Component {
   
   };
 
-  addRemoveWishlist = () => {
+  addRemoveWishlist = async () => {
     if(!this.state.isWishlisted){
       const course = {
         "title":this.state.courses.title,
         "image":this.state.courses.image,
         "price":this.state.courses.price
       }
-      this.props.dispatch(postWishlist(3, this.state.param, course ));
+      await this.props.dispatch(postWishlist(3, this.state.param, course ));
       this.setState({isWishlisted:true});
       // console.log('adsd', this.props.data.wishlist);
       await this.props.dispatch(getWishlist(3));
+
+      Swal.fire({
+        position: 'center',
+        type: 'success',
+        title: 'Added to wishlist.',
+        showConfirmButton: false,
+        timer: 1000
+      })
     } else {
       // console.log(this.props.data.wishlist  ,'before del');
-      this.props.dispatch(deleteWishlist(3, this.state.param));
+      await this.props.dispatch(deleteWishlist(3, this.state.param));
       this.setState({isWishlisted:false});
       await this.props.dispatch(getWishlist(3));
+
+      Swal.fire({
+        position: 'center',
+        type: 'success',
+        title: 'Removed to wishlist.',
+        showConfirmButton: false,
+        timer: 1000
+      })
     }
   }
 
