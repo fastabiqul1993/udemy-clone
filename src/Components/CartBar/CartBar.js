@@ -33,6 +33,7 @@ class CartBar extends Component {
    }
 
   render() { 
+    console.log('props', this.props)
     let total = 0
     this.state.cart.map(course => {
       total += course.price
@@ -53,7 +54,7 @@ class CartBar extends Component {
                             <Card.Img
                               className="body-image"
                               variant="top"
-                              src="https://dummyimage.com/130x74/000/fff"
+                              src={course.image}
                             />
                           </Col>
                           <Col xs={4} className="body-text">
