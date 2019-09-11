@@ -15,6 +15,7 @@ class Hero extends Component {
   render() { 
   let {data, stars, rating } = this.props
   return (
+
       <div className="header">
         <Container style={{ position: "relative" }}>
           <Row>
@@ -22,9 +23,11 @@ class Hero extends Component {
               <span>
                 <i className="fa fa-gift" aria-hidden="true"></i> Gift this course
               </span>
-              <span>
-                <i className="fa fa-heart-o"></i> Whislist
+
+              <span onClick={props.addRemoveWishlist}>
+                <i className="fa fa-heart-o"></i> Wishlist
               </span>
+
             </Col>
             <Col className="left-header" md={8}>
               <div className="title">

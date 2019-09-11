@@ -13,8 +13,12 @@ import {
   Badge
 } from "react-bootstrap";
 import "../../CSS/Navbar.css";
+
+import { connect } from "react-redux";
+
 class navbar extends Component {
   render() {
+    
     return (
       <>
         <Navbar
@@ -51,7 +55,7 @@ class navbar extends Component {
               </Form>
             </Nav.Item>
             <Nav.Link>
-              <span className="categories">Tech on Udemy</span>
+              <span className="categories">Teach on Udemy</span>
             </Nav.Link>
             <Nav.Link>
               <span className="categories">My Courses</span>
@@ -61,7 +65,8 @@ class navbar extends Component {
                 <span className="categories" style={{ color: "red" }}>
                   <i class="fa fa-heart-o fa-lg"></i>
                   <Badge className="notif" pill variant="danger">
-                    9
+                    {/* 9 */}
+                    {this.props.data.wishlist.wishlist.length}
                   </Badge>
                 </span>
               </div>
@@ -91,4 +96,13 @@ class navbar extends Component {
   }
 }
 
-export default navbar;
+// export default navbar;
+
+const mapStateToProps = state => {
+  return {
+    data: state
+  };
+};
+
+export default connect(mapStateToProps)(navbar);
+
