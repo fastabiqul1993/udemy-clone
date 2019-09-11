@@ -49,7 +49,6 @@ class card extends Component {
 
   render() {
     const rat = { ...this.state.rating };
-    console.log("ini card", this.props);
     return (
       <div>
         <Card

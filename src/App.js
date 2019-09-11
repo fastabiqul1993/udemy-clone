@@ -1,6 +1,6 @@
 //Import Package
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 
 //Views
@@ -17,10 +17,10 @@ function App() {
   return (
     <Provider store={store}>
       <Router>
-        <Route exact path="/" component={Home} />
-        <Route path="/detail/:id" component={Detail} />
-        <Route path="/cart" component={Cart} />
-        <Route path="/whislist" component={Whislist} />
+        <Route exact path="/" component={Wrapper} />
+        <Route exact path="/detail/:id" component={Detail} />
+        <Route exact path="/cart" component={Cart} />
+        <Route exact path="/whislist" component={Whislist} />
       </Router>
     </Provider>
   );

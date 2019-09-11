@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getCoursesPage } from "../../Publics/Redux/Actions/coureses";
 import { getWishlist } from "../../Publics/Redux/Actions/wishlist";
-// import { getRating } from "../../Publics/Redux/Actions/rating";
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
-// import { Link } from "react-router-dom";
+import { Container } from "react-bootstrap";
 import CardCol from "../Card/card";
 import Slider from "react-slick";
 import "../../CSS/Home.css";
@@ -68,8 +66,6 @@ class content extends Component {
   };
 
   render() {
-    let { courses } = this.state;
-
     const settings = {
       infinite: false,
       speed: 500,
@@ -124,7 +120,6 @@ class content extends Component {
                 </div>
               );
             })}
-            {/* <a onClick={() => this.handlePage()}>NEXT</a> */}
           </Slider>
         </Container>
       </div>

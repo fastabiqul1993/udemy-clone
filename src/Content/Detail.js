@@ -2,7 +2,11 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { getCourses } from "../Publics/Redux/Actions/coureses";
 import { getRating } from "../Publics/Redux/Actions/rating";
-import { getWishlist, postWishlist, deleteWishlist } from "../Publics/Redux/Actions/wishlist";
+import {
+  getWishlist,
+  postWishlist,
+  deleteWishlist
+} from "../Publics/Redux/Actions/wishlist";
 
 import Navbar from "../Components/Navbar/Navbar";
 import Hero from "../Components/Hero/Hero";
@@ -11,17 +15,15 @@ import StudentFeedback from "../Components/StudentFeedBack/StudentFeedback";
 import Comment from "../Components/Comment/Comment";
 import Footer from "../Components/Footer/Footer";
 
-import Swal from 'sweetalert2';
-
-
+import Swal from "sweetalert2";
 
 class Detail extends Component {
   state = {
-    courses:[],
+    courses: [],
     stars: [],
     totalRating: 0,
     param: this.props.match.params.id,
-    isWishlisted:false
+    isWishlisted: false
   };
 
   componentDidMount = async () => {
@@ -29,7 +31,6 @@ class Detail extends Component {
     await this.setState({
       courses: this.props.data.coursesList.coursesList
     });
-    
 
     await this.props.dispatch(getRating(this.state.param));
     await this.setState({
@@ -40,12 +41,11 @@ class Detail extends Component {
     //check if the course is already in wishlist
     await this.props.dispatch(getWishlist(3));
     this.props.data.wishlist.wishlist.map(course => {
-      if(this.state.param == course.id_course){
-        this.setState({isWishlisted:true})
+      if (this.state.param == course.id_course) {
+        this.setState({ isWishlisted: true });
       }
-    })
+    });
     //end//////////////////////////////////////////////
-  
 
     let totRating = 0;
 
@@ -73,46 +73,42 @@ class Detail extends Component {
     this.setState({ stars: starsTmp });
 
     //end of rendering stars////////////////////////////////////////////////////
-  
   };
 
   addRemoveWishlist = async () => {
-    if(!this.state.isWishlisted){
+    if (!this.state.isWishlisted) {
       const course = {
-        "title":this.state.courses.title,
-        "image":this.state.courses.image,
-        "price":this.state.courses.price
-      }
-      await this.props.dispatch(postWishlist(3, this.state.param, course ));
-      this.setState({isWishlisted:true});
-      // console.log('adsd', this.props.data.wishlist);
+        title: this.state.courses.title,
+        image: this.state.courses.image,
+        price: this.state.courses.price
+      };
+      await this.props.dispatch(postWishlist(3, this.state.param, course));
+      this.setState({ isWishlisted: true });
       await this.props.dispatch(getWishlist(3));
 
       Swal.fire({
-        position: 'center',
-        type: 'success',
-        title: 'Added to wishlist.',
+        position: "center",
+        type: "success",
+        title: "Added to wishlist.",
         showConfirmButton: false,
         timer: 1000
-      })
+      });
     } else {
-      // console.log(this.props.data.wishlist  ,'before del');
       await this.props.dispatch(deleteWishlist(3, this.state.param));
-      this.setState({isWishlisted:false});
+      this.setState({ isWishlisted: false });
       await this.props.dispatch(getWishlist(3));
 
       Swal.fire({
-        position: 'center',
-        type: 'success',
-        title: 'Removed to wishlist.',
+        position: "center",
+        type: "success",
+        title: "Removed to wishlist.",
         showConfirmButton: false,
         timer: 1000
-      })
+      });
     }
-  }
+  };
 
   render() {
-    
     return (
       <Fragment>
         <Navbar />
@@ -120,9 +116,7 @@ class Detail extends Component {
         <Hero
           data={this.state.courses}
           rating={this.state.totalRating}
-          // totalRating={this.state.rating.totalRating}
           stars={this.state.stars}
-
           addRemoveWishlist={this.addRemoveWishlist}
         />
 

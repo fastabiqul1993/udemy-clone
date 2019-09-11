@@ -1,16 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
 import {
   Container,
   Row,
   Col,
-  Button,
   ButtonToolbar,
   DropdownButton,
   Dropdown
 } from "react-bootstrap";
 import "../../CSS/Footer.css";
 
-const Footer = () => {
+function Footer() {
   return (
     <div className="mt-5">
       <div className="footer1">
@@ -47,7 +46,7 @@ const Footer = () => {
       </div>
 
       <div className="footer2 ">
-        <Container classNamw="justify-content-center">
+        <Container className="justify-content-center">
           <Row className="ml-5">
             <Col lg={3}>
               <ul className="list">
@@ -188,6 +187,6 @@ const Footer = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Footer;

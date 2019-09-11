@@ -7,8 +7,6 @@ import Card from "../Components/Card/card";
 
 import { connect } from "react-redux";
 import { getWishlist } from "../Publics/Redux/Actions/wishlist";
-import { async } from "q";
-
 
 class whislist extends Component {
   state = {
@@ -20,13 +18,9 @@ class whislist extends Component {
     this.setState({
       wishlist: this.props.data.wishlist
     });
-    
-    
   };
 
-
   render() {
-    console.log('props',this.props);
     return (
       <>
         <Navbar />
@@ -37,18 +31,18 @@ class whislist extends Component {
           </Container>
         </div>
         <Container className="mt-4">
-            {this.state.wishlist.map(course => {
-              return (
-                <div>
-                  <Card
-                    id={course.id_course}
-                    title={course.title}
-                    image={course.image}
-                    price={course.price}
-                  />
-                </div>
-              );
-            })}
+          {this.state.wishlist.map(course => {
+            return (
+              <div>
+                <Card
+                  id={course.id_course}
+                  title={course.title}
+                  image={course.image}
+                  price={course.price}
+                />
+              </div>
+            );
+          })}
         </Container>
         <Footer />
       </>
@@ -58,7 +52,7 @@ class whislist extends Component {
 
 const mapStateToProps = state => {
   return {
-    data: state.wishlist 
+    data: state.wishlist
   };
 };
 
