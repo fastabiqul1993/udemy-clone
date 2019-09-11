@@ -44,8 +44,8 @@ function SamplePrevArrow(props) {
 class content extends Component {
   state = {
     courses: [],
-    limit: 5,
-    page: 0
+    limit: 3,
+    page: 1
   };
 
   componentDidMount = async () => {
@@ -112,7 +112,7 @@ class content extends Component {
         <Container className="justify-content-center mb-5 ">
           <h3 className="my-3">What to learn next</h3>
           <h5>Top courses in Design</h5>
-          <Slider {...settings}>
+          {/* <Slider {...settings}> */}
             {this.state.courses.map((course, index) => {
               return (
                 <div style={{display: 'inline-block'}}>
@@ -125,8 +125,8 @@ class content extends Component {
                 </div>
               );
             })}
-            {/* <a onClick={this.handlePage}>NEXT</a> */}
-          </Slider>
+            <a onClick={() => this.handlePage()}>NEXT</a>
+          {/* </Slider> */}
         </Container>
       </div>
     );
