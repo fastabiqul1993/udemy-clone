@@ -4,7 +4,7 @@ import "./Comment.css";
 
 function Comment() {
   return (
-    <Container style={{ position: "relative", marginBottom: "25%" }}>
+    <Container style={{ position: "relative" }}>
       <Row className="comment-display">
         <Col md={12}>
           <h3>Reviews</h3>

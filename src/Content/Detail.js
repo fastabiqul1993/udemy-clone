@@ -68,8 +68,10 @@ class Detail extends Component {
           stars={this.state.stars}
         />
         <CourseContent section={this.state.courses.section} />
-        <StudentFeedback />
-        <Comment />
+        <div style={{ marginBottom: "70%" }}>
+          <StudentFeedback />
+          <Comment />
+        </div>
         <Footer />
       </Fragment>
     );

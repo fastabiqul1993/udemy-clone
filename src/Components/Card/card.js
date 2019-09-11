@@ -8,6 +8,9 @@ class card extends Component {
     rating: [],
     id_course: this.props.id,
     stars: [],
+    image: this.props.data.image,
+    price: this.props.data.price,
+    title: this.props.data.title,
     totalRating: 0
   };
 
@@ -46,7 +49,7 @@ class card extends Component {
 
   render() {
     const rat = { ...this.state.rating };
-
+    console.log("ini card", this.props);
     return (
       <div>
         <Card
