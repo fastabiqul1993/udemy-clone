@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getAllCourses } from "../../Publics/Redux/Actions/coureses";
+import { getWishlist } from "../../Publics/Redux/Actions/wishlist";
 import { getRating } from "../../Publics/Redux/Actions/rating";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -46,13 +47,17 @@ class content extends Component {
   };
 
   componentDidMount = async () => {
+    await this.props.dispatch(getWishlist(3));
     await this.props.dispatch(getAllCourses());
     this.setState({
       courses: this.props.data.coursesList
     });
+
+    
   };
 
   render() {
+   
     const settings = {
       infinite: false,
       speed: 500,
