@@ -18,7 +18,7 @@ import { connect } from "react-redux";
 
 class navbar extends Component {
   render() {
-    
+    console.log("nilaiiii", this.props.data);
     return (
       <>
         <Navbar
@@ -74,6 +74,9 @@ class navbar extends Component {
             <Nav.Link>
               <span className="categories">
                 <i class="fa fa-shopping-cart fa-lg"></i>
+                <Badge className="notif" pill variant="danger">
+                  {this.props.data.cart.cart.length}
+                </Badge>
               </span>
             </Nav.Link>
             <Nav.Link>
@@ -105,4 +108,3 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps)(navbar);
-
