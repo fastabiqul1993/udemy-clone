@@ -8,7 +8,7 @@ import Wrapper from "./Views/Wrapper";
 import Home from "./Content/Home";
 import Detail from "./Content/Detail";
 import Cart from "./Content/Cart";
-import Whislist from "./Content/Whislist";
+import Whislist from "./Content/whislist";
 import store from "./Publics/Redux/store";
 
 import "./App.css";

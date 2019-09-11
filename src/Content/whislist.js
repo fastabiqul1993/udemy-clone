@@ -5,8 +5,28 @@ import { Container, Nav } from "react-bootstrap";
 import "../CSS/whislist.css";
 import Card from "../Components/Card/card";
 
+import { connect } from "react-redux";
+import { getWishlist } from "../Publics/Redux/Actions/wishlist";
+import { async } from "q";
+
+
 class whislist extends Component {
+  state = {
+    wishlist: []
+  };
+
+  componentDidMount = async () => {
+    await this.props.dispatch(getWishlist(3));
+    this.setState({
+      wishlist: this.props.data.wishlist
+    });
+    
+    
+  };
+
+
   render() {
+    console.log('props',this.props);
     return (
       <>
         <Navbar />
@@ -17,11 +37,29 @@ class whislist extends Component {
           </Container>
         </div>
         <Container className="mt-4">
-          <Card />
+            {this.state.wishlist.map(course => {
+              return (
+                <div>
+                  <Card
+                    id={course.id_course}
+                    title={course.title}
+                    image={course.image}
+                    price={course.price}
+                  />
+                </div>
+              );
+            })}
         </Container>
         <Footer />
       </>
     );
   }
 }
-export default whislist;
+
+const mapStateToProps = state => {
+  return {
+    data: state.wishlist 
+  };
+};
+
+export default connect(mapStateToProps)(whislist);

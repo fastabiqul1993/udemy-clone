@@ -11,9 +11,11 @@ function Hero(props) {
             <span>
               <i className="fa fa-gift" aria-hidden="true"></i> Gift this course
             </span>
-            <span>
-              <i className="fa fa-heart-o"></i> Whislist
+
+            <span onClick={props.addRemoveWishlist}>
+              <i className="fa fa-heart-o"></i> Wishlist
             </span>
+
           </Col>
           <Col className="left-header" md={8}>
             <div className="title">
