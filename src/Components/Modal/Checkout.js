@@ -6,7 +6,7 @@ function ModalOut(props) {
   const componentRef = useRef();
 
   return (
-    <>
+    <React.Fragment>
       <Modal show={props.keys} onHide={props.keyClose} size="lg">
         <Modal.Header closeButton>
           <Modal.Title>Modal heading</Modal.Title>
@@ -61,7 +61,7 @@ function ModalOut(props) {
           </Button>
         </Modal.Footer>
       </Modal>
-    </>
+    </React.Fragment>
   );
 }
 

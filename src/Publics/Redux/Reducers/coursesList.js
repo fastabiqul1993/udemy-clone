@@ -51,6 +51,29 @@ const coursesList = (state = initialState, action) => {
         isFullfiled: true,
         coursesList: action.payload.data.response
       };
+
+    case "GET_COURSES_PAGE_PENDING":
+      return {
+        ...state,
+        isLoading: true,
+        isRejected: false,
+        isFullfiled: false
+      };
+    case "GET_COURSES_PAGE_REJECTED":
+      return {
+        ...state,
+        isLoading: false,
+        isRejected: true
+      };
+    case "GET_COURSES_PAGE_FULFILLED":
+      return {
+        ...state,
+        isLoading: false,
+        isRejected: false,
+        isFullfiled: true,
+        coursesList: action.payload.data.response
+      };
+
     default:
       return state;
   }

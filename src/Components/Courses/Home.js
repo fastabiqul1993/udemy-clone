@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getAllCourses } from "../../Publics/Redux/Actions/coureses";
+import { getCoursesPage } from "../../Publics/Redux/Actions/coureses";
 import { getWishlist } from "../../Publics/Redux/Actions/wishlist";
-import { getRating } from "../../Publics/Redux/Actions/rating";
+// import { getRating } from "../../Publics/Redux/Actions/rating";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import CardCol from "../Card/card";
 import Slider from "react-slick";
 import "../../CSS/Home.css";
@@ -43,21 +43,30 @@ function SamplePrevArrow(props) {
 
 class content extends Component {
   state = {
-    courses: []
+    courses: [],
+    limit: 5,
+    page: 0
   };
 
   componentDidMount = async () => {
     await this.props.dispatch(getWishlist(3));
-    await this.props.dispatch(getAllCourses());
+    await this.props.dispatch(getCoursesPage(0, this.state.limit));
     this.setState({
       courses: this.props.data.coursesList
     });
-
-    
   };
 
+  handlePage = async() => {
+    let page = this.state.page + 1
+  
+    let offset = (page - 1) * this.state.limit
+    await this.props.dispatch(getCoursesPage(offset, this.state.limit));
+
+    let courses = [...this.state.courses, ...this.props.data.coursesList]
+    await this.setState({ page, courses: courses })
+  }
+
   render() {
-   
     const settings = {
       infinite: false,
       speed: 500,
@@ -97,6 +106,7 @@ class content extends Component {
         }
       ]
     };
+
     return (
       <div>
         <Container className="justify-content-center mb-5 ">
@@ -105,7 +115,7 @@ class content extends Component {
           <Slider {...settings}>
             {this.state.courses.map((course, index) => {
               return (
-                <div>
+                <div style={{display: 'inline-block'}}>
                   <CardCol
                     id={course.id}
                     title={course.title}
@@ -115,6 +125,7 @@ class content extends Component {
                 </div>
               );
             })}
+            {/* <a onClick={this.handlePage}>NEXT</a> */}
           </Slider>
         </Container>
       </div>
