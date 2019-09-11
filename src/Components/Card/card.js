@@ -31,17 +31,21 @@ class card extends Component {
 
     //rendering rating starts dynamically//////////////////////////////////////////////////
     const starsTmp = [];
-    for (let i = 1; i <= avgRating; i++) {
-      starsTmp.push(
-        <i
-          class="fa fa-star mr-1"
-          style={{ color: "yellow" }}
-          aria-hidden="true"
-        ></i>
-      );
-    }
-    for (let i = 1; i <= 5 - avgRating; i++) {
-      starsTmp.push(<i class="fa fa-star-o mr-1" aria-hidden="true"></i>);
+    for (let i = 1; i <= 5; i++) {
+      if (avgRating - i >= 0) {
+        starsTmp.push(
+          <i
+            key={i}
+            className="fa fa-star mr-1"
+            style={{ color: "yellow" }}
+            aria-hidden="true"
+          ></i>
+        );
+      } else {
+        starsTmp.push(
+          <i key={i} className="fa fa-star-o mr-1" aria-hidden="true"></i>
+        );
+      }
     }
     this.setState({ stars: starsTmp });
     //end of rendering stars////////////////////////////////////////////////////
@@ -66,17 +70,15 @@ class card extends Component {
               <Card.Text style={{ fontSize: "9px" }}>
                 Jaysen Batchhelor, Quinton Batch...
               </Card.Text>
-              <Card.Text>
-                <div style={{ fontSize: "9px" }}>
-                  {this.state.stars}
+              <Card.Text style={{ fontSize: "9px" }}>
+                {/* <div > */}
+                {this.state.stars}
 
-                  <span>{rat.averageRating}</span>
-                  <span> ({this.state.totalRating})</span>
-                </div>
+                <span>{rat.averageRating}</span>
+                <span> ({this.state.totalRating})</span>
+                {/* </div> */}
               </Card.Text>
-              <Card.Text>
-                <h5>Rp.{this.props.price}</h5>
-              </Card.Text>
+              <Card.Text>Rp.{this.props.price}</Card.Text>
             </Card.Body>
           </a>
         </Card>

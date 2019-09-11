@@ -22,15 +22,15 @@ function CourseContent(props) {
         <Col md={12}>
           {/* {console.log(sections)} */}
           {sections.map((section, index) => (
-            <Accordion className="accordion" defaultActiveKey="0">
+            <Accordion key={index} className="accordion" defaultActiveKey="0">
               <Card>
                 <Accordion.Toggle as={Card.Header} eventKey={`${index}`}>
                   {section.title}
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey={`${index}`}>
                   <Card.Body>
-                    {sections[index].lecture.map(lec => (
-                      <ListGroup variant="flush">
+                    {sections[index].lecture.map((lec, i) => (
+                      <ListGroup key={i} variant="flush">
                         <ListGroup.Item>
                           {lec.title}
                           <span>{lec.duration} minute</span>

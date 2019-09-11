@@ -110,7 +110,7 @@ class content extends Component {
           <Slider {...settings}>
             {this.state.courses.map((course, index) => {
               return (
-                <div style={{ display: "inline-block" }}>
+                <div key={index} style={{ display: "inline-block" }}>
                   <CardCol
                     id={course.id}
                     title={course.title}

@@ -11,7 +11,7 @@ import Navbar2 from "../Components/Navbar/navbar2";
 import Footer from "../Components/Footer/Footer";
 
 //Home
-import Content from "../Components/Courses/Home";
+import Content from "../Components/Courses/Content";
 
 //Components
 import Hero from "../Components/Hero/Hero";
@@ -62,6 +62,7 @@ class Wrapper extends Component {
 
 const mapStateToProps = state => {
   return {
+    //navbar
     totalWis: state.wishlist.range,
     totalCart: state.cart.range
   };
