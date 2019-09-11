@@ -17,7 +17,7 @@ function App() {
   return (
     <Provider store={store}>
       <Router>
-        <Route exact path="/" component={Wrapper} />
+        <Route exact path="/" render={props => <Wrapper {...props} />} />
         <Route exact path="/detail/:id" component={Detail} />
         <Route exact path="/cart" component={Cart} />
         <Route exact path="/whislist" component={Whislist} />

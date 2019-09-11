@@ -10,6 +10,9 @@ import Navbar from "../Components/Navbar/Navbar";
 import Navbar2 from "../Components/Navbar/navbar2";
 import Footer from "../Components/Footer/Footer";
 
+//Home
+import Content from "../Components/Courses/Home";
+
 //Components
 import Hero from "../Components/Hero/Hero";
 import CourseContent from "../Components/CourseContent/CourseConten";
@@ -39,11 +42,12 @@ class Wrapper extends Component {
 
   render() {
     const { totalWis, totalCart } = this.state;
-    // console.log(totalWis, "ini wish");
+    const getMatch = this.props.match.path;
     return (
       <Fragment>
         <Navbar totalWis={totalWis} totalCart={totalCart} />
         <Navbar2 />
+        <Fragment>{getMatch === "/" ? <Content /> : null}</Fragment>
         {/* <Hero />
         <CourseContent />
         <StudentFeedback />
