@@ -44,7 +44,7 @@ function SamplePrevArrow(props) {
 class content extends Component {
   state = {
     courses: [],
-    limit: 3,
+    limit: 8,
     page: 1
   };
 
@@ -56,37 +56,36 @@ class content extends Component {
     });
   };
 
-  handlePage = async() => {
-    let page = this.state.page + 1
-  
-    let offset = (page - 1) * this.state.limit
+  // ====================================PAGE
+  handlePage = async () => {
+    let page = this.state.page + 1;
+
+    let offset = (page - 1) * this.state.limit;
     await this.props.dispatch(getCoursesPage(offset, this.state.limit));
 
-    let courses = [...this.state.courses, ...this.props.data.coursesList]
-    await this.setState({ page, courses: courses })
-  }
+    let courses = [...this.state.courses, ...this.props.data.coursesList];
+    await this.setState({ page, courses });
+  };
 
   render() {
+    let { courses } = this.state;
+
     const settings = {
       infinite: false,
       speed: 500,
       slidesToShow: 5,
-      slidesToScroll: 3,
+      slidesToScroll: 5,
       nextArrow: <SampleNextArrow />,
       prevArrow: <SamplePrevArrow />,
+      afterChange: (slide, index) => {
+        this.handlePage();
+      },
       responsive: [
-        {
-          breakpoint: 1174,
-          settings: {
-            slidesToShow: 4,
-            slidesToScroll: 3
-          }
-        },
         {
           breakpoint: 1024,
           settings: {
             slidesToShow: 4,
-            slidesToScroll: 3
+            slidesToScroll: 4
           }
         },
         {
@@ -112,10 +111,10 @@ class content extends Component {
         <Container className="justify-content-center mb-5 ">
           <h3 className="my-3">What to learn next</h3>
           <h5>Top courses in Design</h5>
-          {/* <Slider {...settings}> */}
+          <Slider {...settings}>
             {this.state.courses.map((course, index) => {
               return (
-                <div style={{display: 'inline-block'}}>
+                <div style={{ display: "inline-block" }}>
                   <CardCol
                     id={course.id}
                     title={course.title}
@@ -125,8 +124,8 @@ class content extends Component {
                 </div>
               );
             })}
-            <a onClick={() => this.handlePage()}>NEXT</a>
-          {/* </Slider> */}
+            {/* <a onClick={() => this.handlePage()}>NEXT</a> */}
+          </Slider>
         </Container>
       </div>
     );
