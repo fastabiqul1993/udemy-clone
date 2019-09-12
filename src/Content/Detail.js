@@ -23,7 +23,7 @@ class Detail extends Component {
           listRating={rating.listOfRating}
           totalRating={rating.totalRating}
         />
-        {/* <Comment commentList={rating.commentList} /> */}
+        <Comment />
       </Fragment>
     );
   }

@@ -90,7 +90,7 @@ class Wrapper extends Component {
         ) : null}
 
         {getMatch === "/detail/:id" ? (
-          <div style={{ marginBottom: "80vh" }}>
+          <div style={{ marginBottom: "100vh" }}>
             <Detail
               course={course}
               rating={rating}
