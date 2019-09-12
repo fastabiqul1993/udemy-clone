@@ -1,6 +1,12 @@
+//React components
 import React, { Component } from "react";
-import { getRating } from "../../Publics/Redux/Actions/rating";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+
+//Redux actions
+import { getRating } from "../../Publics/Redux/Actions/rating";
+
+//Components style
 import { Card } from "react-bootstrap";
 
 class card extends Component {
@@ -58,9 +64,9 @@ class card extends Component {
         <Card
           style={{ maxWidth: "12rem", minHeight: "20rem", maxHeight: "20rem" }}
         >
-          <a
-            href={`/detail/${this.state.id_course}`}
+          <Link
             style={{ textDecoration: "none", color: "black" }}
+            to={`/detail/${this.state.id_course}`}
           >
             <Card.Img variant="top" src={this.props.image} />
             <Card.Body>
@@ -80,7 +86,7 @@ class card extends Component {
               </Card.Text>
               <Card.Text>Rp.{this.props.price}</Card.Text>
             </Card.Body>
-          </a>
+          </Link>
         </Card>
       </div>
     );

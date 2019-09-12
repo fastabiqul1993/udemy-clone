@@ -21,19 +21,25 @@ import "./App.css";
 function App() {
   return (
     <Provider store={store}>
+      {/* <Navbar />
+      <Navbar2 /> */}
       <Router>
-        <Navbar />
-        <Navbar2 />
-        <Route exact path="/" render={props => <Home {...props} />} />
+        <Route exact path="/" render={props => <Wrapper {...props} />} />
         <Route
           exact
           path="/detail/:id"
-          render={props => <Detail {...props} />}
+          render={props => <Wrapper {...props} />}
         />
-        <Route exact path="/cart" component={Cart} />
-        <Route exact path="/whislist" component={Whislist} />
-        <Footer />
+        <Route exact path="/cart" render={props => <Wrapper {...props} />} />
+        <Route
+          exact
+          path="/whislist"
+          render={props => <Wrapper {...props} />}
+        />
+        {/* <Route exact path="/cart" component={Cart} />
+        <Route exact path="/whislist" component={Whislist} /> */}
       </Router>
+      {/* <Footer /> */}
     </Provider>
   );
 }

@@ -12,23 +12,8 @@ import { Navbar, Nav, Form, Image, Badge } from "react-bootstrap";
 import "../../CSS/Navbar.css";
 
 class navbar extends Component {
-  state = {
-    totalWis: 0,
-    totalCart: 0
-  };
-
-  componentDidMount = async () => {
-    await this.props.dispatch(getWishlist(3));
-    await this.props.dispatch(getCart(1));
-
-    this.setState({
-      totalWis: this.props.totalWis,
-      totalCart: this.props.totalCart
-    });
-  };
-
   render() {
-    const { totalWis, totalCart } = this.state;
+    const { totalWis, totalCart } = this.props;
 
     return (
       <Fragment>

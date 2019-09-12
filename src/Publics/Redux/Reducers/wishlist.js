@@ -47,14 +47,15 @@ const wishlist = (state = initialState, action) => {
         isRejected: true
       };
     case "POST_WISHLIST_FULFILLED":
-      // state.wishlist.push(action.payload.config.data);
-
+      state.wishlist.push(action.payload.data.response.body);
+      state.range += 1;
       return {
         ...state,
         isLoading: false,
         isRejected: false,
         isFullfiled: true,
-        wishlist: action.payload.data.response
+        wishlist: state.wishlist,
+        range: state.range
       };
 
     //DELETE WISHLIST////////////////////////////////////////////////////////////
@@ -72,14 +73,19 @@ const wishlist = (state = initialState, action) => {
         isRejected: true
       };
     case "DELETE_WISHLIST_FULFILLED":
-      // const dataAfterDelete = state.wishlist.filter(wish => wish.id != action.payload.config.data.id_course)
-
+      const dataAfterDelete = state.cart.filter(
+        data =>
+          data.id_user !== action.payload.data.body.id_user &&
+          data.id_course !== action.payload.data.body.id_course
+      );
+      state.range -= 1;
       return {
         ...state,
         isLoading: false,
         isRejected: false,
-        isFullfiled: true
-        // wishlist: dataAfterDelete
+        isFullfiled: true,
+        wishlist: dataAfterDelete,
+        range: state.range
       };
 
     default:

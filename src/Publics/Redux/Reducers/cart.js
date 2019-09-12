@@ -1,6 +1,7 @@
 const initialState = {
   cart: [],
   range: 0,
+  isInCart: {},
   isLoading: false,
   isFulfilled: false,
   isRejected: false
@@ -48,11 +49,14 @@ const cart = (state = initialState, action) => {
         isRejected: true
       };
     case "POST_CART_FULFILLED":
+      state.cart.push(action.payload.data.response.body);
+      state.range += 1;
       return {
         ...state,
         isLoading: false,
-        isFulfilled: true
-        // cart : action.payload.data.response
+        isFulfilled: true,
+        cart: state.cart,
+        range: state.range
       };
 
     // =====================DELETE========================
@@ -71,11 +75,18 @@ const cart = (state = initialState, action) => {
         isRejected: true
       };
     case "DELETE_CART_FULFILLED":
+      const dataAfterDelete = state.cart.filter(
+        data =>
+          data.id_user !== action.payload.data.body.id_user &&
+          data.id_course !== action.payload.data.body.id_course
+      );
+      state.range -= 1;
       return {
         ...state,
         isLoading: false,
-        isFulfilled: true
-        // cart : action.payload.data.response
+        isFulfilled: true,
+        cart: dataAfterDelete,
+        range: state.range
       };
 
     default:

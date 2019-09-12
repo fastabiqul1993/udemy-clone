@@ -14,7 +14,7 @@ class whislist extends Component {
   };
 
   componentDidMount = async () => {
-    await this.props.dispatch(getWishlist(3));
+    await this.props.dispatch(getWishlist(1));
     this.setState({
       wishlist: this.props.data.wishlist
     });
@@ -29,9 +29,9 @@ class whislist extends Component {
           </Container>
         </div>
         <Container className="mt-4">
-          {this.state.wishlist.map(course => {
+          {this.state.wishlist.map((course, index) => {
             return (
-              <div>
+              <div key={index}>
                 <Card
                   id={course.id_course}
                   title={course.title}

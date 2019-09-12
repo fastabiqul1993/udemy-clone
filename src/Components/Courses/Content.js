@@ -1,7 +1,12 @@
+//React components
 import React, { Component } from "react";
 import { connect } from "react-redux";
+
+//Redux Actions
 import { getCoursesPage } from "../../Publics/Redux/Actions/coureses";
 import { getWishlist } from "../../Publics/Redux/Actions/wishlist";
+
+//Components style
 import { Container } from "react-bootstrap";
 import CardCol from "../Card/card";
 import Slider from "react-slick";
@@ -47,10 +52,9 @@ class content extends Component {
   };
 
   componentDidMount = async () => {
-    await this.props.dispatch(getWishlist(3));
     await this.props.dispatch(getCoursesPage(0, this.state.limit));
     this.setState({
-      courses: this.props.data.coursesList
+      courses: this.props.courseList
     });
   };
 
@@ -61,7 +65,7 @@ class content extends Component {
     let offset = (page - 1) * this.state.limit;
     await this.props.dispatch(getCoursesPage(offset, this.state.limit));
 
-    let courses = [...this.state.courses, ...this.props.data.coursesList];
+    let courses = [...this.state.courses, ...this.props.courseList];
     await this.setState({ page, courses });
   };
 
@@ -129,7 +133,7 @@ class content extends Component {
 
 const mapStateToProps = state => {
   return {
-    data: state.coursesList
+    courseList: state.coursesList.coursesList
   };
 };
 

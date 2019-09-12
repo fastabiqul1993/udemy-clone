@@ -50,7 +50,6 @@ class CartBar extends React.Component {
     this.state.cart.map(course => {
       total += course.price;
     });
-    console.log("cart", this.state.cart);
     return (
       // ref={ref => (this.printOut = ref)}
       <div>
