@@ -24,54 +24,54 @@ class Detail extends Component {
     isWishlisted: false
   };
 
-  // componentDidMount = async () => {
-  //   await this.props.dispatch(getCourses(this.state.param));
-  //   await this.setState({
-  //     courses: this.props.data.coursesList.coursesList
-  //   });
+  componentDidMount = async () => {
+    await this.props.dispatch(getCourses(this.state.param));
+    await this.setState({
+      courses: this.props.data.coursesList.coursesList
+    });
 
-  //   await this.props.dispatch(getRating(this.state.param));
-  //   await this.setState({
-  //     rating: this.props.data.rating.rating
-  //   });
+    await this.props.dispatch(getRating(this.state.param));
+    await this.setState({
+      rating: this.props.data.rating.rating
+    });
 
-  //   //setting wishlist status///////////////////////////////
-  //   //check if the course is already in wishlist
-  //   await this.props.dispatch(getWishlist(3));
-  //   this.props.data.wishlist.wishlist.map(course => {
-  //     if (this.state.param == course.id_course) {
-  //       this.setState({ isWishlisted: true });
-  //     }
-  //   });
-  //   //end//////////////////////////////////////////////
+    //setting wishlist status///////////////////////////////
+    //check if the course is already in wishlist
+    await this.props.dispatch(getWishlist(3));
+    this.props.data.wishlist.wishlist.map(course => {
+      if (this.state.param == course.id_course) {
+        this.setState({ isWishlisted: true });
+      }
+    });
+    //end//////////////////////////////////////////////
 
-  //   let totRating = 0;
+    let totRating = 0;
 
-  //   let avgRating = 0;
-  //   if (!(typeof this.state.rating == "undefined")) {
-  //     avgRating = Math.floor(this.state.rating.averageRating);
-  //     totRating = this.state.rating.totalRating;
-  //     this.setState({ totalRating: totRating });
-  //   }
+    let avgRating = 0;
+    if (!(typeof this.state.rating == "undefined")) {
+      avgRating = Math.floor(this.state.rating.averageRating);
+      totRating = this.state.rating.totalRating;
+      this.setState({ totalRating: totRating });
+    }
 
-  //   //rendering rating starts dynamically//////////////////////////////////////////////////
-  //   const starsTmp = [];
-  //   for (let i = 1; i <= avgRating; i++) {
-  //     starsTmp.push(
-  //       <i
-  //         class="fa fa-star mr-1"
-  //         style={{ color: "yellow" }}
-  //         aria-hidden="true"
-  //       ></i>
-  //     );
-  //   }
-  //   for (let i = 1; i <= 5 - avgRating; i++) {
-  //     starsTmp.push(<i class="fa fa-star-o mr-1" aria-hidden="true"></i>);
-  //   }
-  //   this.setState({ stars: starsTmp });
+    //rendering rating starts dynamically//////////////////////////////////////////////////
+    const starsTmp = [];
+    for (let i = 1; i <= avgRating; i++) {
+      starsTmp.push(
+        <i
+          class="fa fa-star mr-1"
+          style={{ color: "yellow" }}
+          aria-hidden="true"
+        ></i>
+      );
+    }
+    for (let i = 1; i <= 5 - avgRating; i++) {
+      starsTmp.push(<i class="fa fa-star-o mr-1" aria-hidden="true"></i>);
+    }
+    this.setState({ stars: starsTmp });
 
-  //   //end of rendering stars////////////////////////////////////////////////////
-  // };
+    //end of rendering stars////////////////////////////////////////////////////
+  };
 
   addRemoveWishlist = async () => {
     if (!this.state.isWishlisted) {

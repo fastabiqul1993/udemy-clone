@@ -21,6 +21,7 @@ function Footer() {
                 src="https://i.udemycdn.com/teaching/teach-footer.png"
                 width="95rem"
                 height="100rem"
+                alt="logo"
               />
             </Col>
             <Col md={7} className="pt-4">

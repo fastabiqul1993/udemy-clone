@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { getCart, deleteCart } from "../../Publics/Redux/Actions/cart";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
@@ -45,20 +45,18 @@ class CartBar extends React.Component {
   };
 
   render() {
-    // console.log("props", this.props);
     let total = 0;
     this.state.cart.map(course => {
-      total += course.price;
+      return (total += course.price);
     });
     return (
-      // ref={ref => (this.printOut = ref)}
       <div>
         <Container>
           <Row className="cart-bar">
             <Col md={9} style={{ textAlign: "left" }}>
               <h5>{this.state.cart.length} Course in cart</h5>
-              {this.state.cart.map(course => (
-                <Row>
+              {this.state.cart.map((course, i) => (
+                <Row key={i}>
                   <Col sm={12}>
                     <Card>
                       <Card.Body className="cart-body">
@@ -103,9 +101,8 @@ class CartBar extends React.Component {
                             </div>
                           </Col>
                           <Col xs={2} className="price">
-                            {console.log(total)}
                             <b>
-                              Rp{" "}
+                              Rp
                               {course.price.toLocaleString(navigator.language, {
                                 minimumFractionDigits: 0
                               })}

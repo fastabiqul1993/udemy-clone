@@ -8,6 +8,7 @@ import { getRating } from "../../Publics/Redux/Actions/rating";
 
 //Components style
 import { Card } from "react-bootstrap";
+import "./card.css";
 
 class card extends Component {
   state = {
@@ -70,21 +71,22 @@ class card extends Component {
           >
             <Card.Img variant="top" src={this.props.image} />
             <Card.Body>
-              <Card.Title style={{ fontSize: "17px" }}>
-                {this.props.title}
-              </Card.Title>
+              <Card.Title className="texts pb-1">{this.props.title}</Card.Title>
               <Card.Text style={{ fontSize: "9px" }}>
                 Jaysen Batchhelor, Quinton Batch...
               </Card.Text>
               <Card.Text style={{ fontSize: "9px" }}>
-                {/* <div > */}
                 {this.state.stars}
 
                 <span>{rat.averageRating}</span>
                 <span> ({this.state.totalRating})</span>
-                {/* </div> */}
               </Card.Text>
-              <Card.Text>Rp.{this.props.price}</Card.Text>
+              <Card.Text>
+                Rp.
+                {this.props.price.toLocaleString(navigator.language, {
+                  minimumFractionDigits: 0
+                })}
+              </Card.Text>
             </Card.Body>
           </Link>
         </Card>

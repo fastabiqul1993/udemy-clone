@@ -9,7 +9,6 @@ import Comment from "../Components/Comment/Comment";
 class Detail extends Component {
   render() {
     const { course, rating, stars, plusTotalCart } = this.props;
-    // console.log("ini detail", this.props);
     return (
       <Fragment>
         <Hero

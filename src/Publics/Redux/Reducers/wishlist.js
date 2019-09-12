@@ -73,18 +73,17 @@ const wishlist = (state = initialState, action) => {
         isRejected: true
       };
     case "DELETE_WISHLIST_FULFILLED":
-      const dataAfterDelete = state.cart.filter(
-        data =>
-          data.id_user !== action.payload.data.body.id_user &&
-          data.id_course !== action.payload.data.body.id_course
-      );
+      // const dataAfterDelete = state.cart.filter(
+      //   data =>
+      //     data.id_user !== action.payload.data.body.id_user &&
+      //     data.id_course !== action.payload.data.body.id_course
+      // );
       state.range -= 1;
       return {
         ...state,
         isLoading: false,
         isRejected: false,
         isFullfiled: true,
-        wishlist: dataAfterDelete,
         range: state.range
       };
 

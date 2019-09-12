@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import Navbar from "../Components/Navbar/Navbar";
-import Footer from "../Components/Footer/Footer";
-import { Container, Nav } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import "../CSS/whislist.css";
 import Card from "../Components/Card/card";
 

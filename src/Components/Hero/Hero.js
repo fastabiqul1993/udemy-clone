@@ -1,57 +1,40 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { deleteWishlist } from "../../Publics/Redux/Actions/wishlist";
 import { Container, Row, Col, Badge, Card, Button } from "react-bootstrap";
 import { postCart } from "../../Publics/Redux/Actions/cart";
 import { postWishlist } from "../../Publics/Redux/Actions/wishlist";
 import "./Hero.css";
-import cart from "../../Publics/Redux/Reducers/cart";
 
 class Hero extends Component {
   state = {
-    cart: []
+    cart: [],
+    isAdded: false
   };
 
   handleCart = id_course => {
     this.props.dispatch(postCart(1, id_course)).then(suc => {
       alert("add success");
+      window.location.reload();
     });
   };
 
-  handleWish = id_course => {
-    this.props.dispatch(postWishlist(1, id_course)).then(() => {
+  handleWish = (id_user, id_course) => {
+    this.props.dispatch(postWishlist(id_user, id_course)).then(() => {
       alert("Add success");
+      window.location.reload();
+    });
+  };
+
+  handleRemove = (id_user, id_course) => {
+    this.props.dispatch(deleteWishlist(id_user, id_course)).then(() => {
+      alert("Remove success");
+      window.location.reload();
     });
   };
 
   render() {
-    let { course, stars, rating, cart } = this.props;
-
-    // let result = 0;
-    // if (!(typeof this.props.avgRating == "undefined")) {
-    //   result = Math.floor(this.props.avgRating);
-    // }
-
-    // //rendering rating starts dynamically//////////////////////////////////////////////////
-    // const starsTmp = [];
-    // for (let i = 1; i <= 5; i++) {
-    //   if (result - i >= 0) {
-    //     starsTmp.push(
-    //       <i
-    //         key={i}
-    //         className="fa fa-star mr-1"
-    //         style={{ color: "yellow" }}
-    //         aria-hidden="true"
-    //       ></i>
-    //     );
-    //   } else {
-    //     starsTmp.push(
-    //       <i key={i} className="fa fa-star-o mr-1" aria-hidden="true"></i>
-    //     );
-    //   }
-    // }
-    // this.setState({ stars: starsTmp });
-    // //end of rendering stars////////////////////////////////////////////////////
-
+    let { course, stars, rating, cart, wishlist } = this.props;
     return (
       <div className="header">
         <Container style={{ position: "relative" }}>
@@ -61,10 +44,22 @@ class Hero extends Component {
                 <i className="fa fa-gift" aria-hidden="true"></i> Gift this
                 course
               </span>
-
-              <span onClick={() => this.handleWish(course.id)}>
-                <i className="fa fa-heart-o"></i> Wishlist
-              </span>
+              {/* id_course */}
+              {wishlist.find(target => target.id_course === course.id) ? (
+                <span
+                  style={{ cursor: "pointer" }}
+                  onClick={() => this.handleRemove(1, course.id)}
+                >
+                  <i className="fa fa-heart"></i> Wishlist
+                </span>
+              ) : (
+                <span
+                  style={{ cursor: "pointer" }}
+                  onClick={() => this.handleWish(1, course.id)}
+                >
+                  <i className="fa fa-heart-o"></i> Wishlist
+                </span>
+              )}
             </Col>
             <Col className="left-header" md={8}>
               <div className="title">
@@ -93,11 +88,13 @@ class Hero extends Component {
                   variant="top"
                   src={course.image}
                 />
-                <Card.Body className="hero-body">
+                <Card.Body key={cart.length} className="hero-body">
                   <Card.Title>
                     <h4>Rp.{course.price}</h4>
                   </Card.Title>
-                  {cart.find(target => target.id_course === course.id) ? (
+                  {cart.find(
+                    target => Number(target.id_course) === course.id
+                  ) ? (
                     <Button
                       onClick={() => this.handleCart(course.id)}
                       variant="danger"
@@ -132,10 +129,9 @@ class Hero extends Component {
 
 const mapStateToProps = state => {
   return {
-    cart: state.cart.cart
+    cart: state.cart.cart,
+    wishlist: state.wishlist.wishlist
   };
 };
 
 export default connect(mapStateToProps)(Hero);
-
-// export default Hero;

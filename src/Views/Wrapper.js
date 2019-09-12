@@ -8,7 +8,6 @@ import { getCourses } from "../Publics/Redux/Actions/coureses";
 import { getRating } from "../Publics/Redux/Actions/rating";
 
 //Main components
-import Navbar from "../Components/Navbar/Navbar";
 import Navbar2 from "../Components/Navbar/navbar2";
 import Footer from "../Components/Footer/Footer";
 
@@ -76,7 +75,7 @@ class Wrapper extends Component {
   };
 
   render() {
-    const { totalWis, totalCart, stars, course, rating } = this.state;
+    const { stars, course, rating } = this.state;
     const getMatch = this.props.match.path;
 
     return (

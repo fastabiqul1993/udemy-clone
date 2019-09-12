@@ -22,8 +22,8 @@ function ModalOut(props) {
                 </tr>
               </thead>
               <tbody>
-                {props.datas.map(data => (
-                  <tr>
+                {props.datas.map((data, index) => (
+                  <tr key={index}>
                     <td>1</td>
                     <td>{data.title}</td>
                     <td>
