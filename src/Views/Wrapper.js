@@ -47,14 +47,41 @@ class Wrapper extends Component {
       course: this.props.course,
       rating: this.props.rating
     });
+
+    let result = 0;
+    if (!(typeof this.state.rating.averageRating == "undefined")) {
+      result = Math.floor(this.state.rating.averageRating);
+    }
+
+    //rendering rating starts dynamically//////////////////////////////////////////////////
+    const starsTmp = [];
+    for (let i = 1; i <= 5; i++) {
+      if (result - i >= 0) {
+        starsTmp.push(
+          <i
+            key={i}
+            className="fa fa-star mr-1"
+            style={{ color: "yellow" }}
+            aria-hidden="true"
+          ></i>
+        );
+      } else {
+        starsTmp.push(
+          <i key={i} className="fa fa-star-o mr-1" aria-hidden="true"></i>
+        );
+      }
+    }
+    this.setState({ stars: starsTmp });
+    //end of rendering stars////////////////////////////////////////////////////
   };
 
   render() {
-    const { totalWis, totalCart, course, rating } = this.state;
+    const { totalWis, totalCart, stars, course, rating } = this.state;
     const getMatch = this.props.match.path;
+
     return (
       <Fragment>
-        <Navbar totalWis={totalWis} totalCart={totalCart} />
+        {/* <Navbar totalWis={totalWis} totalCart={totalCart} /> */}
         <Navbar2 />
 
         {getMatch === "/" ? (
@@ -68,6 +95,7 @@ class Wrapper extends Component {
             <Detail
               course={course}
               rating={rating}
+              stars={stars}
               plusTotalCart={this.plusTotalCart}
             />
           </div>
@@ -81,7 +109,7 @@ class Wrapper extends Component {
         ) : null}
 
         {getMatch === "/whislist" ? (
-          <div style={{ marginBottom: "80vh" }}>
+          <div style={{ marginBottom: "0" }}>
             <Whislist />
           </div>
         ) : null}

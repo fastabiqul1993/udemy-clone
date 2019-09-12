@@ -8,7 +8,7 @@ import Comment from "../Components/Comment/Comment";
 
 class Detail extends Component {
   render() {
-    const { course, rating, plusTotalCart } = this.props;
+    const { course, rating, stars, plusTotalCart } = this.props;
     // console.log("ini detail", this.props);
     return (
       <Fragment>
@@ -16,6 +16,7 @@ class Detail extends Component {
           course={course}
           rating={rating.averageRating}
           plusTotalCart={plusTotalCart}
+          stars={stars}
         />
         <CourseContent section={course.section} />
         <StudentFeedback

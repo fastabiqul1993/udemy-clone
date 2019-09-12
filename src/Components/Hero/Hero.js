@@ -26,6 +26,32 @@ class Hero extends Component {
   render() {
     let { course, stars, rating, cart } = this.props;
 
+    // let result = 0;
+    // if (!(typeof this.props.avgRating == "undefined")) {
+    //   result = Math.floor(this.props.avgRating);
+    // }
+
+    // //rendering rating starts dynamically//////////////////////////////////////////////////
+    // const starsTmp = [];
+    // for (let i = 1; i <= 5; i++) {
+    //   if (result - i >= 0) {
+    //     starsTmp.push(
+    //       <i
+    //         key={i}
+    //         className="fa fa-star mr-1"
+    //         style={{ color: "yellow" }}
+    //         aria-hidden="true"
+    //       ></i>
+    //     );
+    //   } else {
+    //     starsTmp.push(
+    //       <i key={i} className="fa fa-star-o mr-1" aria-hidden="true"></i>
+    //     );
+    //   }
+    // }
+    // this.setState({ stars: starsTmp });
+    // //end of rendering stars////////////////////////////////////////////////////
+
     return (
       <div className="header">
         <Container style={{ position: "relative" }}>

@@ -28,10 +28,10 @@ class whislist extends Component {
             <span className="course">My Course</span>
           </Container>
         </div>
-        <Container className="mt-4">
+        <Container className="mt-4 d-flex" style={{ flexWrap: "wrap" }}>
           {this.state.wishlist.map((course, index) => {
             return (
-              <div key={index}>
+              <div key={index} className="mr-4 mb-4">
                 <Card
                   id={course.id_course}
                   title={course.title}

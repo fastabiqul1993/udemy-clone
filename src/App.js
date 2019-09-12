@@ -18,12 +18,12 @@ import store from "./Publics/Redux/store";
 
 import "./App.css";
 
-function App() {
+function App(props) {
   return (
     <Provider store={store}>
-      {/* <Navbar />
-      <Navbar2 /> */}
       <Router>
+        {/* <Navbar {...props} /> */}
+        <Route path="/" render={props => <Navbar {...props} />} />
         <Route exact path="/" render={props => <Wrapper {...props} />} />
         <Route
           exact
