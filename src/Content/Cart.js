@@ -9,10 +9,8 @@ class Cart extends Component {
   render() {
     return (
       <Fragment>
-        <Navbar />
         <CartHeader />
         <CartBar />
-        <Footer />
       </Fragment>
     );
   }

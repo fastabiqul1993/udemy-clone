@@ -1,7 +1,6 @@
-import { stat } from "fs";
-
 const initialState = {
   coursesList: [],
+  course: [],
   isLoading: false,
   isFullfiled: false,
   isRejected: false

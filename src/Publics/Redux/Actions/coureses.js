@@ -8,6 +8,7 @@ export const getAllCourses = () => {
 };
 
 export const getCourses = id => {
+  // console.log("masukk");
   return {
     type: "GET_COURSES",
     payload: Axios.get(`http://localhost:5000/api/courses/${id}`)

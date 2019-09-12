@@ -111,8 +111,6 @@ class Detail extends Component {
   render() {
     return (
       <Fragment>
-        <Navbar />
-
         <Hero
           data={this.state.courses}
           rating={this.state.totalRating}
@@ -125,8 +123,6 @@ class Detail extends Component {
           <StudentFeedback />
           <Comment />
         </div>
-
-        <Footer />
       </Fragment>
     );
   }

@@ -10,7 +10,6 @@ import {
 import "./CourseContent.css";
 
 function CourseContent(props) {
-  console.log(props.section, "ini props");
   const sections = props.section;
 
   return sections ? (

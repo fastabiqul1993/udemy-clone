@@ -23,8 +23,6 @@ class whislist extends Component {
   render() {
     return (
       <>
-        <Navbar />
-
         <div className="headerup">
           <Container className="pt-2 pb-2">
             <span className="course">My Course</span>
@@ -44,7 +42,6 @@ class whislist extends Component {
             );
           })}
         </Container>
-        <Footer />
       </>
     );
   }
