@@ -4,6 +4,7 @@ import { deleteWishlist } from "../../Publics/Redux/Actions/wishlist";
 import { Container, Row, Col, Badge, Card, Button } from "react-bootstrap";
 import { postCart } from "../../Publics/Redux/Actions/cart";
 import { postWishlist } from "../../Publics/Redux/Actions/wishlist";
+import Swal from "sweetalert2";
 import "./Hero.css";
 
 class Hero extends Component {
@@ -14,22 +15,40 @@ class Hero extends Component {
 
   handleCart = id_course => {
     this.props.dispatch(postCart(1, id_course)).then(suc => {
-      alert("add success");
-      window.location.reload();
+      Swal.fire({
+        title: "Success!",
+        text: "Add to cart",
+        type: "success",
+        confirmButtonText: "Cool"
+      }).then(() => {
+        window.location.reload();
+      });
     });
   };
 
   handleWish = (id_user, id_course) => {
     this.props.dispatch(postWishlist(id_user, id_course)).then(() => {
-      alert("Add success");
-      window.location.reload();
+      Swal.fire({
+        title: "Success!",
+        text: "Add to wishlist",
+        type: "success",
+        confirmButtonText: "Cool"
+      }).then(() => {
+        window.location.reload();
+      });
     });
   };
 
   handleRemove = (id_user, id_course) => {
     this.props.dispatch(deleteWishlist(id_user, id_course)).then(() => {
-      alert("Remove success");
-      window.location.reload();
+      Swal.fire({
+        title: "Success!",
+        text: "Remove from wishlist",
+        type: "success",
+        confirmButtonText: "Cool"
+      }).then(() => {
+        window.location.reload();
+      });
     });
   };
 
