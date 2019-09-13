@@ -1,7 +1,14 @@
+//React components
 import React, { Component } from "react";
-import { getRating } from "../../Publics/Redux/Actions/rating";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+
+//Redux actions
+import { getRating } from "../../Publics/Redux/Actions/rating";
+
+//Components style
 import { Card } from "react-bootstrap";
+import "./card.css";
 
 class card extends Component {
   state = {
@@ -31,17 +38,21 @@ class card extends Component {
 
     //rendering rating starts dynamically//////////////////////////////////////////////////
     const starsTmp = [];
-    for (let i = 1; i <= avgRating; i++) {
-      starsTmp.push(
-        <i
-          class="fa fa-star mr-1"
-          style={{ color: "yellow" }}
-          aria-hidden="true"
-        ></i>
-      );
-    }
-    for (let i = 1; i <= 5 - avgRating; i++) {
-      starsTmp.push(<i class="fa fa-star-o mr-1" aria-hidden="true"></i>);
+    for (let i = 1; i <= 5; i++) {
+      if (avgRating - i >= 0) {
+        starsTmp.push(
+          <i
+            key={i}
+            className="fa fa-star mr-1"
+            style={{ color: "yellow" }}
+            aria-hidden="true"
+          ></i>
+        );
+      } else {
+        starsTmp.push(
+          <i key={i} className="fa fa-star-o mr-1" aria-hidden="true"></i>
+        );
+      }
     }
     this.setState({ stars: starsTmp });
     //end of rendering stars////////////////////////////////////////////////////
@@ -49,37 +60,35 @@ class card extends Component {
 
   render() {
     const rat = { ...this.state.rating };
-    console.log("ini card", this.props);
     return (
       <div>
         <Card
           style={{ maxWidth: "12rem", minHeight: "20rem", maxHeight: "20rem" }}
         >
-          <a
-            href={`/detail/${this.state.id_course}`}
+          <Link
             style={{ textDecoration: "none", color: "black" }}
+            to={`/detail/${this.state.id_course}`}
           >
             <Card.Img variant="top" src={this.props.image} />
             <Card.Body>
-              <Card.Title style={{ fontSize: "17px" }}>
-                {this.props.title}
-              </Card.Title>
+              <Card.Title className="texts pb-1">{this.props.title}</Card.Title>
               <Card.Text style={{ fontSize: "9px" }}>
                 Jaysen Batchhelor, Quinton Batch...
               </Card.Text>
-              <Card.Text>
-                <div style={{ fontSize: "9px" }}>
-                  {this.state.stars}
+              <Card.Text style={{ fontSize: "9px" }}>
+                {this.state.stars}
 
-                  <span>{rat.averageRating}</span>
-                  <span> ({this.state.totalRating})</span>
-                </div>
+                <span>{rat.averageRating}</span>
+                <span> ({this.state.totalRating})</span>
               </Card.Text>
               <Card.Text>
-                <h5>Rp.{this.props.price}</h5>
+                Rp.
+                {this.props.price.toLocaleString(navigator.language, {
+                  minimumFractionDigits: 0
+                })}
               </Card.Text>
             </Card.Body>
-          </a>
+          </Link>
         </Card>
       </div>
     );

@@ -9,7 +9,7 @@ function CartHeader() {
         <Row>
           <Col md={12} className="title">
             <span>
-              <i class="fa fa-home" aria-hidden="true"></i>
+              <i className="fa fa-home" aria-hidden="true"></i>
             </span>
             <span>/ Shopping Cart</span>
             <h1>Shopping Cart</h1>

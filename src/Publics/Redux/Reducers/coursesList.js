@@ -1,7 +1,6 @@
-import { stat } from "fs";
-
 const initialState = {
   coursesList: [],
+  course: {},
   isLoading: false,
   isFullfiled: false,
   isRejected: false
@@ -49,7 +48,7 @@ const coursesList = (state = initialState, action) => {
         isLoading: false,
         isRejected: false,
         isFullfiled: true,
-        coursesList: action.payload.data.response
+        course: action.payload.data.response
       };
 
     case "GET_COURSES_PAGE_PENDING":

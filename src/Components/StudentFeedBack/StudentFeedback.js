@@ -1,8 +1,17 @@
 import React from "react";
 import { Container, Row, Col, ProgressBar } from "react-bootstrap";
 import "./StudentFeedback.css";
+function StudenFeedback(props) {
+  // Percentage Calculation
+  const calcPercentage = (value, total) => {
+    if (value == 0) {
+      return 0;
+    } else {
+      return (value / total) * 100;
+    }
+  };
 
-function StudenFeedback() {
+  let listRating = props.listRating ? props.listRating : 0;
   return (
     <Container style={{ position: "relative" }}>
       <Row className="student-feedback">
@@ -10,70 +19,48 @@ function StudenFeedback() {
           <h3>Student Feedback</h3>
         </Col>
         <Col md={4} className="rating">
-          <h1>4.6</h1>
-          <span className="star-badge">
-            <span className="fa fa-star"></span>
-            <span className="fa fa-star"></span>
-            <span className="fa fa-star"></span>
-            <span className="fa fa-star"></span>
-            <span className="fa fa-star"></span>
-          </span>
+          <h1>{props.avgRating}</h1>
           <p>Course Rating</p>
         </Col>
         <Col md={8}>
           <div className="rate-bar">
             <ProgressBar className="bar" variant="secondary" now={60} />
             <span className="right-badge">
-              <span className="fa fa-star"></span>
-              <span className="fa fa-star"></span>
-              <span className="fa fa-star"></span>
-              <span className="fa fa-star"></span>
-              <span className="fa fa-star"></span>
-              <span className="percentage">60%</span>
+              <span className="percentage">
+                {calcPercentage(listRating.fiveStar, props.totalRating)}%
+              </span>
             </span>
           </div>
           <div className="rate-bar">
             <ProgressBar className="bar" variant="secondary" now={40} />
             <span className="right-badge">
-              <span className="fa fa-star"></span>
-              <span className="fa fa-star"></span>
-              <span className="fa fa-star"></span>
-              <span className="fa fa-star"></span>
-              <span className="fa fa-star"></span>
-              <span className="percentage">60%</span>
+              <span className="percentage">
+                {calcPercentage(listRating.fourStar, props.totalRating)}%
+              </span>
             </span>
           </div>
           <div className="rate-bar">
             <ProgressBar className="bar" variant="secondary" now={40} />
             <span className="right-badge">
-              <span className="fa fa-star"></span>
-              <span className="fa fa-star"></span>
-              <span className="fa fa-star"></span>
-              <span className="fa fa-star"></span>
-              <span className="fa fa-star"></span>
-              <span className="percentage">60%</span>
+              <span className="percentage">
+                {calcPercentage(listRating.threeStar, props.totalRating)}%
+              </span>
             </span>
           </div>
           <div className="rate-bar">
             <ProgressBar className="bar" variant="secondary" now={40} />
             <span className="right-badge">
-              <span className="fa fa-star"></span>
-              <span className="fa fa-star"></span>
-              <span className="fa fa-star"></span>
-              <span className="fa fa-star"></span>
-              <span className="fa fa-star"></span>
-              <span className="percentage">60%</span>
+              <span className="percentage">
+                {calcPercentage(listRating.twoStar, props.totalRating)}%
+              </span>
             </span>
           </div>
           <div className="rate-bar">
             <ProgressBar className="bar" variant="secondary" now={40} />
             <span className="right-badge">
-              <span className="fa fa-star"></span>
-              <span className="fa fa-star"></span>
-              <span className="fa fa-star"></span>
-              <span className="fa fa-star"></span>
-              <span className="fa fa-star"></span>
-              <span className="percentage">60%</span>
+              <span className="percentage">
+                {calcPercentage(listRating.oneStar, props.totalRating)}%
+              </span>
             </span>
           </div>
         </Col>

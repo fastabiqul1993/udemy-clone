@@ -1,10 +1,13 @@
+//React components
 import React, { Component } from "react";
 import { connect } from "react-redux";
+
+//Redux Actions
 import { getCoursesPage } from "../../Publics/Redux/Actions/coureses";
 import { getWishlist } from "../../Publics/Redux/Actions/wishlist";
-// import { getRating } from "../../Publics/Redux/Actions/rating";
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
-// import { Link } from "react-router-dom";
+
+//Components style
+import { Container } from "react-bootstrap";
 import CardCol from "../Card/card";
 import Slider from "react-slick";
 import "../../CSS/Home.css";
@@ -49,10 +52,9 @@ class content extends Component {
   };
 
   componentDidMount = async () => {
-    await this.props.dispatch(getWishlist(3));
     await this.props.dispatch(getCoursesPage(0, this.state.limit));
     this.setState({
-      courses: this.props.data.coursesList
+      courses: this.props.courseList
     });
   };
 
@@ -63,13 +65,11 @@ class content extends Component {
     let offset = (page - 1) * this.state.limit;
     await this.props.dispatch(getCoursesPage(offset, this.state.limit));
 
-    let courses = [...this.state.courses, ...this.props.data.coursesList];
+    let courses = [...this.state.courses, ...this.props.courseList];
     await this.setState({ page, courses });
   };
 
   render() {
-    let { courses } = this.state;
-
     const settings = {
       infinite: false,
       speed: 500,
@@ -114,7 +114,7 @@ class content extends Component {
           <Slider {...settings}>
             {this.state.courses.map((course, index) => {
               return (
-                <div style={{ display: "inline-block" }}>
+                <div key={index} style={{ display: "inline-block" }}>
                   <CardCol
                     id={course.id}
                     title={course.title}
@@ -124,7 +124,6 @@ class content extends Component {
                 </div>
               );
             })}
-            {/* <a onClick={() => this.handlePage()}>NEXT</a> */}
           </Slider>
         </Container>
       </div>
@@ -134,7 +133,7 @@ class content extends Component {
 
 const mapStateToProps = state => {
   return {
-    data: state.coursesList
+    courseList: state.coursesList.coursesList
   };
 };
 

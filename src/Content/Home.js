@@ -1,20 +1,13 @@
-import React, { Component } from "react";
-import Navbar from "../Components/Navbar/Navbar";
-import Content from "../Components/Courses/Home";
-import Footer from "../Components/Footer/Footer";
-import Navbar2 from "../Components/Navbar/navbar2";
+import React, { Fragment } from "react";
+import Content from "../Components/Courses/Content";
 
-class home extends Component {
-  render() {
-    return (
-      <div>
-        <Navbar />
-        <Navbar2 />
-        <Content />
-        <Footer />
-      </div>
-    );
-  }
+function home(props) {
+  // const { courseList, limit, page } = props;
+  return (
+    <Fragment>
+      <Content />
+    </Fragment>
+  );
 }
 
 export default home;

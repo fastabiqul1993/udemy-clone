@@ -1,40 +1,72 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { deleteWishlist } from "../../Publics/Redux/Actions/wishlist";
 import { Container, Row, Col, Badge, Card, Button } from "react-bootstrap";
-import { connect } from 'react-redux'
-import { postCart } from '../../Publics/Redux/Actions/cart'
-
+import { postCart } from "../../Publics/Redux/Actions/cart";
+import { postWishlist } from "../../Publics/Redux/Actions/wishlist";
 import "./Hero.css";
 
 class Hero extends Component {
+  state = {
+    cart: [],
+    isAdded: false
+  };
+
   handleCart = id_course => {
     this.props.dispatch(postCart(1, id_course)).then(suc => {
-      window.location = '/cart'
-    })
-  }
+      alert("add success");
+      window.location.reload();
+    });
+  };
 
-  render() { 
-  let {data, stars, rating } = this.props
-  return (
+  handleWish = (id_user, id_course) => {
+    this.props.dispatch(postWishlist(id_user, id_course)).then(() => {
+      alert("Add success");
+      window.location.reload();
+    });
+  };
 
+  handleRemove = (id_user, id_course) => {
+    this.props.dispatch(deleteWishlist(id_user, id_course)).then(() => {
+      alert("Remove success");
+      window.location.reload();
+    });
+  };
+
+  render() {
+    let { course, stars, rating, cart, wishlist } = this.props;
+    return (
       <div className="header">
         <Container style={{ position: "relative" }}>
           <Row>
             <Col className="upper-header" md={{ span: 4, offset: 8 }}>
               <span>
-                <i className="fa fa-gift" aria-hidden="true"></i> Gift this course
+                <i className="fa fa-gift" aria-hidden="true"></i> Gift this
+                course
               </span>
-
-              <span onClick={this.props.addRemoveWishlist}>
-                <i className="fa fa-heart-o"></i> Wishlist
-              </span>
-
+              {/* id_course */}
+              {wishlist.find(target => target.id_course === course.id) ? (
+                <span
+                  style={{ cursor: "pointer" }}
+                  onClick={() => this.handleRemove(1, course.id)}
+                >
+                  <i className="fa fa-heart"></i> Wishlist
+                </span>
+              ) : (
+                <span
+                  style={{ cursor: "pointer" }}
+                  onClick={() => this.handleWish(1, course.id)}
+                >
+                  <i className="fa fa-heart-o"></i> Wishlist
+                </span>
+              )}
             </Col>
             <Col className="left-header" md={8}>
               <div className="title">
-                <h1>{data.title}</h1>
+                <h1>{course.title}</h1>
               </div>
               <div className="sub-title">
-                <p>{data.description}</p>
+                <p>{course.description}</p>
               </div>
               <div className="rate">
                 <Badge pill variant="warning" className="right-margin">
@@ -54,15 +86,34 @@ class Hero extends Component {
                 <Card.Img
                   className="hero-card-img"
                   variant="top"
-                  src={data.image}
+                  src={course.image}
                 />
-                <Card.Body className="hero-body">
+                <Card.Body key={cart.length} className="hero-body">
                   <Card.Title>
-                    <h4>Rp.{data.price}</h4>
+                    <h4>Rp.{course.price}</h4>
                   </Card.Title>
-                  <Button onClick={ () => this.handleCart(data.id) } variant="danger" size="lg" block>
-                    Add to cart
-                  </Button>
+                  {cart.find(
+                    target => Number(target.id_course) === course.id
+                  ) ? (
+                    <Button
+                      onClick={() => this.handleCart(course.id)}
+                      variant="danger"
+                      size="lg"
+                      block
+                      disabled
+                    >
+                      Add to cart
+                    </Button>
+                  ) : (
+                    <Button
+                      onClick={() => this.handleCart(course.id)}
+                      variant="danger"
+                      size="lg"
+                      block
+                    >
+                      Add to cart
+                    </Button>
+                  )}
                   <Button variant="outline-secondary" size="lg" block>
                     Buy now
                   </Button>
@@ -76,10 +127,11 @@ class Hero extends Component {
   }
 }
 
-const   mapStateToProps = state => {
-  return{
-    cart : state.cart
-  }
-}
+const mapStateToProps = state => {
+  return {
+    cart: state.cart.cart,
+    wishlist: state.wishlist.wishlist
+  };
+};
 
 export default connect(mapStateToProps)(Hero);

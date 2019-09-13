@@ -1,9 +1,14 @@
 //Import Package
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 
-//Views
+//Navigations components
+import Navbar from "./Components/Navbar/Navbar";
+import Navbar2 from "./Components/Navbar/navbar2";
+import Footer from "./Components/Footer/Footer";
+
+//Main contents
 import Wrapper from "./Views/Wrapper";
 import Home from "./Content/Home";
 import Detail from "./Content/Detail";
@@ -13,15 +18,28 @@ import store from "./Publics/Redux/store";
 
 import "./App.css";
 
-function App() {
+function App(props) {
   return (
     <Provider store={store}>
       <Router>
-        <Route exact path="/" component={Home} />
-        <Route path="/detail/:id" component={Detail} />
-        <Route path="/cart" component={Cart} />
-        <Route path="/whislist" component={Whislist} />
+        {/* <Navbar {...props} /> */}
+        <Route path="/" render={props => <Navbar {...props} />} />
+        <Route exact path="/" render={props => <Wrapper {...props} />} />
+        <Route
+          exact
+          path="/detail/:id"
+          render={props => <Wrapper {...props} />}
+        />
+        <Route exact path="/cart" render={props => <Wrapper {...props} />} />
+        <Route
+          exact
+          path="/whislist"
+          render={props => <Wrapper {...props} />}
+        />
+        {/* <Route exact path="/cart" component={Cart} />
+        <Route exact path="/whislist" component={Whislist} /> */}
       </Router>
+      {/* <Footer /> */}
     </Provider>
   );
 }
